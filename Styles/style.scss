@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+}
+html {
+  width: 100vw;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vh;
+  height: 100vh;
+  padding-bottom: 10vh;
+  .lordicon {
+    width: 8vw;
+    height: 8vw;
+  }
+
+  .Vx_Logo {
+    width: 5vw;
+    height: 5vw;
+    position: absolute;
+    bottom: 8vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  h1,
+  p {
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    max-width: 62vw;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  body {
+    padding-bottom: 20vh;
+
+    h1 {
+      font-size: 1.6rem;
+    }
+    .lordicon {
+      width: 62vw;
+      height: 62vw;
+    }
+    .Vx_Logo {
+      width: 15vw;
+      height: 15vw;
+      bottom: 5vh;
+    }
+  }
+}
