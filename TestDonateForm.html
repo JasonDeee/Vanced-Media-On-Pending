@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Donate Form</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        height: 100vh;
+      }
+
+      input {
+        height: 64px;
+        width: 24vw;
+      }
+
+      textarea {
+        height: 256px;
+        width: 24vw;
+      }
+      button {
+        height: 32px;
+        width: 5vw;
+      }
+    </style>
+  </head>
+  <body>
+    <form
+      method="POST"
+      action="https://script.google.com/macros/s/AKfycbxMaSr80UK7yGnCvWZtU1VIdyCHFTl3hc4bkQ59OHniUNYjk5tyvnOAEOHvCBedMgM9og/exec"
+    >
+      <label for="DonateName">Tên của bạn:</label><br />
+      <input type="text" id="DonateName" name="Name" /><br /><br />
+
+      <label for="DonateMessage">Lời nhắn:</label><br />
+      <textarea id="DonateMessage" name="Message"></textarea><br /><br />
+
+      <button type="submit" id="DonateButton">Gửi</button>
+    </form>
+
+    <p id="TheTag"></p>
+  </body>
+  <script>
+    TheTag = document.getElementById("TheTag");
+    TheTag.innerText = document.referrer;
+  </script>
+</html>
