@@ -6,7 +6,7 @@ function doPost(e) {
   var sheet = spreadsheet.getSheetByName("Donater List");
 
   // Lấy dữ liệu từ yêu cầu POST
-  var data = e.parameter;
+  const data = JSON.parse(e.postData.contents);
   var name = data.Name; // Lấy dữ liệu từ input có name="Name"
   var message = data.Message; // Lấy dữ liệu từ textarea có name="Message"
 
