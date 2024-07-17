@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Test</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      img {
+        width: 50vw;
+        height: 50vw;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="" alt="QR Place Here" id="QRImage" />
+  </body>
+  <script>
+    const QRData = {
+      accountNo: 1043374358,
+      accountName: "VANCED",
+      acqId: 970436,
+      amount: 321000,
+      addInfo: "HeheBoizz",
+      format: "text",
+      template: "qIRXByI",
+    };
+    const TheQRImage = document.getElementById("QRImage");
+    fetch("https://api.vietqr.io/v2/generate", {
+      method: "POST",
+      headers: {
+        "x-client-id": "96a6c861-3012-4a20-aae1-da3955979482",
+        "x-api-key": "984f47ea-7d4e-4255-858e-310c5622fb9d",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(QRData),
+    })
+      .then((response) => response.json())
+      .then((Resdata) => {
+        // Xử lý phản hồi từ Apps Script (nếu cần)
+        console.log(Resdata.data.qrDataURL);
+        TheQRImage.src = Resdata.data.qrDataURL;
+      })
+      .catch((error) => {
+        console.error("Lỗi khi gửi dữ liệu:", error);
+      });
+  </script>
+</html>
