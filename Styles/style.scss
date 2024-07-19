@@ -7,6 +7,34 @@
   font-family: "Lexend", sans-serif;
   font-optical-sizing: auto;
 }
+
+.LightButtonHover {
+  .elementor-button {
+    transition: all 0.66s cubic-bezier(0.25, 0, 0, 1);
+    background-color: var(--e-global-color-accent) !important;
+  }
+  .elementor-button:hover {
+    box-shadow: 4px 4px 0px 0px #0c1136 !important;
+  }
+}
+.BGHoverContainer,
+.BGHoverContainer::after,
+.BGHoverContainer::before {
+  transition: all 1.33s cubic-bezier(0.25, 0, 0, 1);
+  cursor: pointer !important;
+  overflow: hidden !important;
+}
+.BGHoverContainer:hover {
+  transform: scale(0.96);
+}
+.BGHoverContainer:hover::before {
+  transform: scale(1.12);
+}
+
+.Vx_PostHolder {
+  box-shadow: 8px 8px 32px #00000056;
+}
+
 html {
   width: 100vw;
 }

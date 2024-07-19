@@ -35,10 +35,7 @@
     </style>
   </head>
   <body>
-    <form
-      method="POST"
-      action="https://script.google.com/macros/s/AKfycbxMaSr80UK7yGnCvWZtU1VIdyCHFTl3hc4bkQ59OHniUNYjk5tyvnOAEOHvCBedMgM9og/exec"
-    >
+    <form>
       <label for="DonateName">Tên của bạn:</label><br />
       <input type="text" id="DonateName" name="Name" /><br /><br />
 
@@ -51,7 +48,47 @@
     <p id="TheTag"></p>
   </body>
   <script>
-    TheTag = document.getElementById("TheTag");
-    TheTag.innerText = document.referrer;
+    const donateButton = document.getElementById("DonateButton");
+    const donateNameInput = document.getElementById("DonateName");
+    const donateMessageTextarea = document.getElementById("DonateMessage");
+
+    donateButton.addEventListener("click", () => {
+      const name = donateNameInput.value;
+      const message = donateMessageTextarea.value;
+
+      // Tạo object chứa dữ liệu
+      const data = {
+        Name: name,
+        Message: message,
+      };
+
+      // Gửi yêu cầu POST đến Apps Script
+      fetch(
+        "https://script.google.com/macros/s/AKfycbxMaSr80UK7yGnCvWZtU1VIdyCHFTl3hc4bkQ59OHniUNYjk5tyvnOAEOHvCBedMgM9og/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: JSON.stringify(data),
+        }
+      )
+        .then((response) => response.text())
+        .then((data) => {
+          // Xử lý phản hồi từ Apps Script (nếu cần)
+          console.log(data);
+        })
+        .catch((error) => {
+          console.error("Lỗi khi gửi dữ liệu:", error);
+        });
+    });
   </script>
+  <p>
+    00020101021238580010A000000727012800069704070114190359540630100208QRIBFTTA52046011530370454063000005802VN5903TCB6005Hanoi62150811okay
+    adu string63043936
+  </p>
+  <p>
+    00020101021238500010A000000727012000069704360106VANCED0208QRIBFTTA53037045407300,0005802VN62160812hehee
+    boizzz630464E0
+  </p>
 </html>
