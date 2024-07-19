@@ -58,13 +58,10 @@
                 "4bec191dfcmsh75ea856d8f80f60p15e66bjsn44adbd77af9d",
             },
             body: {
-              data: Resdata.data.qrCode,
-              config: {
-                body: "circle",
-              },
-              size: 300,
-              download: false,
-              file: "svg",
+              frame_name: "no-frame",
+              qr_code_text: "https://www.qr-code-generator.com/",
+              image_format: "SVG",
+              qr_code_logo: "scan-me-square",
             },
           }
         ).then((MonkeyQRRes) => {
