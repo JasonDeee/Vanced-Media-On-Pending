@@ -44,9 +44,35 @@
       .then((response) => response.json())
       .then((Resdata) => {
         // Xử lý phản hồi từ Apps Script (nếu cần)
-        console.log(Resdata.data.qrDataURL);
-        TheQRImage.src = Resdata.data.qrDataURL;
+        console.log(Resdata.data.qrCode);
+        // TheQRImage.src = Resdata.data.qrDataURL;
+        // https://qrcode-monkey.p.rapidapi.com/qr/custom
+        fetch(
+          "https://api.qr-code-generator.com/v1/create?access-token=UlzTGGuNVK9t0jQkBj73Z3AQz12szj4eWevxkMMJh1H1CqGBli4rRixv49hoyOtd",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json", // Bắt buộc để gửi dữ liệu JSON
+              "x-rapidapi-host": "qrcode-monkey.p.rapidapi.com",
+              "x-rapidapi-key":
+                "4bec191dfcmsh75ea856d8f80f60p15e66bjsn44adbd77af9d",
+            },
+            body: {
+              data: Resdata.data.qrCode,
+              config: {
+                body: "circle",
+              },
+              size: 300,
+              download: false,
+              file: "svg",
+            },
+          }
+        ).then((MonkeyQRRes) => {
+          console.log(MonkeyQRRes);
+        });
+        //
       })
+      .then((response) => {})
       .catch((error) => {
         console.error("Lỗi khi gửi dữ liệu:", error);
       });
