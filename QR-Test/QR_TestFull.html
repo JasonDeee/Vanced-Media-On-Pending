@@ -79,7 +79,9 @@
           .then((response) => response.json())
           .then((resData) => {
             // Trả về dữ liệu base64 của QR code
-            return resData.data.qrCode;
+            console.log(resData.data.qrDataURL);
+
+            return resData.data.qrDataURL;
           });
       };
 
