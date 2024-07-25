@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Test</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      img {
+        width: 50vw;
+        height: 50vw;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="" alt="QR Place Here" id="QRImage" />
+  </body>
+  <script>
+    // Khai Báo các phần tử
+    const donateButton = document.getElementById("DonateButton"); // Nút "Tạo QR"
+    const updateButton = document.getElementById("Cập nhật"); // Nút "Cập nhật"
+    const TheQRImage = document.getElementById("QRImage");
+    const clientFormSection = document.getElementById("QR_ClientForm");
+    const qrGeneratedSection = document.getElementById("QR_Generated_Section");
+
+    // Dữ liệu QR code (ban đầu)
+    let QRData = {
+      accountNo: 1043374358,
+      accountName: "VANCED",
+      acqId: 970436,
+      amount: 321000,
+      addInfo: "HeheBoizz",
+      format: "text",
+      template: "qIRXByI",
+    };
+
+    // Hàm tạo QR code
+    const generateQRCode = (qrData) => {
+      return fetch("https://api.vietqr.io/v2/generate", {
+        method: "POST",
+        headers: {
+          "x-client-id": "96a6c861-3012-4a20-aae1-da3955979482",
+          "x-api-key": "984f47ea-7d4e-4255-858e-310c5622fb9d",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(qrData),
+      })
+        .then((response) => response.json())
+        .then((resData) => {
+          return resData.data.qrCode;
+        });
+    };
+
+    // Hàm xử lý khi bấm nút "Tạo QR" hoặc "Cập nhật"
+    const handleGenerateOrUpdate = () => {
+      // Lấy giá trị từ input
+      const qrDonateName = document.getElementById("DonateName").value;
+      const qrDonateMessage = document.getElementById("DonateMessage").value;
+      const qrDonatePrice = document.getElementById("DonatePrice").value;
+
+      // Cập nhật dữ liệu QR code
+      QRData.amount = qrDonatePrice; // Giả sử bạn muốn cập nhật số tiền
+      QRData.addInfo = qrDonateMessage; // Giả sử bạn muốn cập nhật lời nhắn
+
+      // Tạo object chứa dữ liệu Google Sheets
+      let spreadSheetData = {
+        QRDonateName: qrDonateName,
+        QRDonateMessage: qrDonateMessage,
+        QRDonatePrice: qrDonatePrice,
+      };
+
+      // Tạo QR code
+      generateQRCode(QRData)
+        .then((qrCodeData) => {
+          // Hiển thị QR code
+          TheQRImage.src = `https://api.vietqr.io/v2/image?data=${qrCodeData}`;
+
+          // Gửi dữ liệu lên Google Sheets (chỉ khi bấm "Tạo QR")
+          if (clientFormSection.classList.contains("active")) {
+            return fetch(
+              "https://script.google.com/macros/s/AKfycbxMaSr80UK7yGnCvWZtU1VIdyCHFTl3hc4bkQ59OHniUNYjk5tyvnOAEOHvCBedMgM9og/exec",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: JSON.stringify(spreadSheetData),
+              }
+            );
+          }
+        })
+        .then((response) => {
+          if (response) return response.text(); // Xử lý phản hồi nếu có
+        })
+        .then((spreadsheetData) => {
+          if (spreadsheetData) console.log(spreadsheetData);
+        })
+        .catch((error) => {
+          console.error("Lỗi:", error);
+        })
+        .finally(() => {
+          // Chuyển đổi section (chỉ khi bấm "Tạo QR")
+          if (clientFormSection.classList.contains("active")) {
+            clientFormSection.classList.remove("active");
+            clientFormSection.classList.add("QRGenComplete");
+            qrGeneratedSection.classList.remove("QRGenComplete");
+            qrGeneratedSection.classList.add("active");
+          }
+        });
+    };
+
+    // Gán sự kiện cho cả 2 nút
+    donateButton.addEventListener("click", handleGenerateOrUpdate);
+    updateButton.addEventListener("click", handleGenerateOrUpdate);
+
+    // Xử lý nút "Quay lại"
+    const backButton = document.getElementById("Quay lại"); // Thay 'Quay lại' bằng ID của nút
+    backButton.addEventListener("click", () => {
+      // Hiển thị lại section "Mời Café"
+      clientFormSection.classList.remove("QRGenComplete");
+      clientFormSection.classList.add("active");
+
+      // Ẩn section "Grazie"
+      qrGeneratedSection.classList.remove("active");
+      qrGeneratedSection.classList.add("QRGenComplete");
+    });
+  </script>
+  <script></script>
+</html>

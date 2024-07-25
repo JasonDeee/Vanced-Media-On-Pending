@@ -22,7 +22,12 @@
     <img src="" alt="QR Place Here" id="QRImage" />
   </body>
   <script>
-    const QRData = {
+    // Các biến yêu cầu
+    // const qrDonateName = document.getElementById("DonateName").value;
+    // const qrDonateMessage = document.getElementById("DonateMessage").value;
+    // const qrDonatePrice = document.getElementById("DonatePrice").value;
+    // Tao QR
+    var QRData = {
       accountNo: 1043374358,
       accountName: "VANCED",
       acqId: 970436,
@@ -31,7 +36,7 @@
       format: "text",
       template: "qIRXByI",
     };
-    const TheQRImage = document.getElementById("QRImage");
+    // const TheQRImage = document.getElementById("QRImage");
     fetch("https://api.vietqr.io/v2/generate", {
       method: "POST",
       headers: {
@@ -41,37 +46,20 @@
       },
       body: JSON.stringify(QRData),
     })
-      .then((response) => response.json())
+      .then((QRresponse) => QRresponse.json())
       .then((Resdata) => {
         // Xử lý phản hồi từ Apps Script (nếu cần)
-        console.log(Resdata.data.qrCode);
-        // TheQRImage.src = Resdata.data.qrDataURL;
-        // https://qrcode-monkey.p.rapidapi.com/qr/custom
-        fetch(
-          "https://api.qr-code-generator.com/v1/create?access-token=UlzTGGuNVK9t0jQkBj73Z3AQz12szj4eWevxkMMJh1H1CqGBli4rRixv49hoyOtd",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json", // Bắt buộc để gửi dữ liệu JSON
-              "x-rapidapi-host": "qrcode-monkey.p.rapidapi.com",
-              "x-rapidapi-key":
-                "4bec191dfcmsh75ea856d8f80f60p15e66bjsn44adbd77af9d",
-            },
-            body: {
-              frame_name: "no-frame",
-              qr_code_text: "https://www.qr-code-generator.com/",
-              image_format: "SVG",
-              qr_code_logo: "scan-me-square",
-            },
-          }
-        ).then((MonkeyQRRes) => {
-          console.log(MonkeyQRRes);
-        });
+        console.log(Resdata.data.qrDataURL);
+        // TheQRImage.src = Resdata.SpreadSheetData.qrDataURL;
+
         //
       })
       .then((response) => {})
       .catch((error) => {
         console.error("Lỗi khi gửi dữ liệu:", error);
       });
+
+    // Gửi link tới List Spreadsheet
   </script>
+  <script></script>
 </html>
