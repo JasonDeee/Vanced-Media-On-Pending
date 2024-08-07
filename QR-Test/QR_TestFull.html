@@ -9,14 +9,14 @@
       }
 
       /* CSS để hiển thị section khi có class "QRGenComplete" */
-      .QRGenComplete.active {
-        display: block; /* Hiển thị khi được thêm class "active" */
+      .QRGenComplete.qrActive {
+        display: block; /* Hiển thị khi được thêm class "qrActive" */
       }
     </style>
   </head>
   <body>
     <!-- Section "Mời Café" -->
-    <section id="QR_ClientForm" class="active">
+    <section id="QR_ClientForm" class="qrActive">
       <h2>Mời chúng tôi một ly cafe</h2>
       <label for="DonateName">Nickname - Để chúng mình có thể tri ân bạn</label
       ><br />
@@ -41,18 +41,22 @@
     <section id="QR_Generated_Section" class="QRGenComplete">
       <h2>Grazie!</h2>
       <img id="QRImage" src="" alt="QR Code" />
-      <button id="Cập nhật">Cập nhật</button>
+      <button id="QRUpdateButton">Cập nhật</button>
       <button id="Quay lại">Quay lại</button>
     </section>
 
     <script>
       const donateButton = document.getElementById("DonateButton"); // Nút "Tạo QR"
-      const updateButton = document.getElementById("Cập nhật"); // Nút "Cập nhật"
-      const qrImage = document.getElementById("QRImage"); // Thay "QRImage" bằng ID của thẻ <img>
+      const updateButton = document.getElementById("QRUpdateButton"); // Nút "Cập nhật"
+      const qrImage = document.querySelector("#QRImage img"); // Thẻ <img> trong #QRImage
       const clientFormSection = document.getElementById("QR_ClientForm");
       const qrGeneratedSection = document.getElementById(
         "QR_Generated_Section"
       );
+      const qrLoadingFullSection = document.getElementById(
+        "QR_Normal_Pending_Icon"
+      ); // Section loading
+      const backButton = document.getElementById("QR_TurnBack"); // Nút "Quay lại"
 
       // Dữ liệu QR code (ban đầu)
       let QRData = {
@@ -78,29 +82,30 @@
         })
           .then((response) => response.json())
           .then((resData) => {
-            // Trả về dữ liệu base64 của QR code
-            console.log(resData.data.qrDataURL);
-
             return resData.data.qrDataURL;
           });
       };
 
-      // Hàm xử lý khi bấm nút "Tạo QR" hoặc "Cập nhật"
-      const handleGenerateOrUpdate = () => {
+      // Hàm xử lý khi bấm nút "Tạo QR"
+      donateButton.addEventListener("click", () => {
         // Lấy giá trị từ input
-        const qrDonateName = document.getElementById("DonateName").value;
-        const qrDonateMessage = document.getElementById("DonateMessage").value;
-        const qrDonatePrice = document.getElementById("DonatePrice").value;
+        let qrDonateName = document.getElementById("DonateName").value;
+        let qrDonateMessage = document.getElementById("DonateMessage").value;
+        let qrDonatePrice = document.getElementById("DonatePrice").value;
 
         // Tạo addInfo từ dữ liệu input
-        const addInfo = `${qrDonateName} - ${qrDonateMessage} - ${qrDonatePrice}`;
+        let addInfo = `${qrDonateName} - ${qrDonateMessage} - ${qrDonatePrice}`;
 
         // Chuyển đổi format amount
-        const amount = qrDonatePrice.replace(/\./g, "").replace("₫", "");
+        let amount = qrDonatePrice.replace(/\./g, "").replace("₫", "");
 
         // Cập nhật dữ liệu QR code
         QRData.addInfo = addInfo;
         QRData.amount = parseInt(amount, 10);
+
+        // Ẩn section "Mời Café" và hiển thị section loading
+        clientFormSection.classList.remove("qrActive");
+        qrLoadingFullSection.classList.add("qrActive");
 
         // Tạo QR code
         generateQRCode(QRData)
@@ -108,23 +113,21 @@
             // Hiển thị QR code trực tiếp bằng dữ liệu base64
             qrImage.src = qrCodeData;
 
-            // Gửi dữ liệu lên Google Sheets (chỉ khi bấm "Tạo QR")
-            if (clientFormSection.classList.contains("active")) {
-              return fetch(
-                "https://script.google.com/macros/s/AKfycbxMaSr80UK7yGnCvWZtU1VIdyCHFTl3hc4bkQ59OHniUNYjk5tyvnOAEOHvCBedMgM9og/exec",
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                  },
-                  body: JSON.stringify({
-                    QRDonateName: qrDonateName,
-                    QRDonateMessage: qrDonateMessage,
-                    QRDonatePrice: qrDonatePrice,
-                  }),
-                }
-              );
-            }
+            // Gửi dữ liệu lên Google Sheets
+            return fetch(
+              "https://script.google.com/macros/s/AKfycbxMaSr80UK7yGnCvWZtU1VIdyCHFTl3hc4bkQ59OHniUNYjk5tyvnOAEOHvCBedMgM9og/exec",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: JSON.stringify({
+                  QRDonateName: qrDonateName,
+                  QRDonateMessage: qrDonateMessage,
+                  QRDonatePrice: qrDonatePrice,
+                }),
+              }
+            );
           })
           .then((response) => {
             if (response) return response.text();
@@ -136,31 +139,78 @@
             console.error("Lỗi:", error);
           })
           .finally(() => {
-            // Chuyển đổi section (chỉ khi bấm "Tạo QR")
-            if (clientFormSection.classList.contains("active")) {
-              clientFormSection.classList.remove("active");
-              clientFormSection.classList.add("QRGenComplete");
-              qrGeneratedSection.classList.remove("QRGenComplete");
-              qrGeneratedSection.classList.add("active");
+            // Ẩn section loading và hiển thị section "Grazie"
+            qrLoadingFullSection.classList.remove("qrActive");
+            qrGeneratedSection.classList.add("qrActive");
+          });
+      });
+
+      // Hàm xử lý khi bấm nút "Cập nhật"
+      updateButton.addEventListener("click", () => {
+        // Lấy giá trị từ input
+        let qrDonateName = document.getElementById("DonateName").value;
+        let qrDonateMessage = document.getElementById("DonateMessage").value;
+        let qrDonatePrice = document.getElementById("DonatePrice").value;
+
+        // Tạo addInfo từ dữ liệu input
+        let addInfo = `${qrDonateName} - ${qrDonateMessage} - ${qrDonatePrice}`;
+
+        // Chuyển đổi format amount
+        let amount = qrDonatePrice.replace(/\./g, "").replace("₫", "");
+
+        // Cập nhật dữ liệu QR code
+        QRData.addInfo = addInfo;
+        QRData.amount = parseInt(amount, 10);
+
+        // Tạo QR code
+        generateQRCode(QRData)
+          .then((qrCodeData) => {
+            // Hiển thị QR code trực tiếp bằng dữ liệu base64
+            qrImage.src = qrCodeData;
+          })
+          .catch((error) => {
+            console.error("Lỗi:", error);
+          });
+      });
+
+      // Xử lý nút "Quay lại"
+      backButton.addEventListener("click", () => {
+        // Hiển thị section "Mời Café"
+        clientFormSection.classList.add("qrActive");
+
+        // Ẩn section "Grazie"
+        qrGeneratedSection.classList.remove("qrActive");
+      });
+    </script>
+    <script>
+      const listDonaterHolder = document.getElementById("ListDonater_Holder");
+      const getDonateData = (section) => {
+        let url = `https://script.google.com/macros/s/AKfycbxMaSr80UK7yGnCvWZtU1VIdyCHFTl3hc4bkQ59OHniUNYjk5tyvnOAEOHvCBedMgM9og/exec?section=${section}`;
+
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(`Dữ liệu section ${section}:`, data);
+            if (data.isEnd === false) {
+              getDonateData(section + 1);
             }
+            // Tạo danh sách HTML từ dữ liệu
+            const htmlList = data.data
+              .map((item) => `<p>${item.name}</p>`)
+              .join("");
+
+            // Cập nhật nội dung của section "TRI ÂN CÁC PHA CHẾ"
+            listDonaterHolder.querySelector(
+              ".elementor-widget-container"
+            ).innerHTML = htmlList;
+          })
+          .catch((error) => {
+            console.error("Lỗi khi lấy dữ liệu:", error);
           });
       };
 
-      // Gán sự kiện cho cả 2 nút
-      donateButton.addEventListener("click", handleGenerateOrUpdate);
-      updateButton.addEventListener("click", handleGenerateOrUpdate);
-
-      // Xử lý nút "Quay lại"
-      const backButton = document.getElementById("Quay lại");
-      backButton.addEventListener("click", () => {
-        // Hiển thị lại section "Mời Café"
-        clientFormSection.classList.remove("QRGenComplete");
-        clientFormSection.classList.add("active");
-
-        // Ẩn section "Grazie"
-        qrGeneratedSection.classList.remove("active");
-        qrGeneratedSection.classList.add("QRGenComplete");
-      });
+      // Bắt đầu lấy dữ liệu từ section 1
+      getDonateData(1);
     </script>
   </body>
 </html>
