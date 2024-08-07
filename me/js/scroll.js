@@ -33,7 +33,7 @@ var dx = sx, // For container positions And Force (Percentage 70% Recommended)
 function easeScroll() {
   // sx = window.pageXOffset;
   sy = window.pageYOffset;
-  console.log(sy);
+  // console.log(sy);
 }
 
 window.requestAnimationFrame(render);
