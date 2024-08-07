@@ -88,15 +88,15 @@
       // Hàm xử lý khi bấm nút "Tạo QR" hoặc "Cập nhật"
       const handleGenerateOrUpdate = () => {
         // Lấy giá trị từ input
-        const qrDonateName = document.getElementById("DonateName").value;
-        const qrDonateMessage = document.getElementById("DonateMessage").value;
-        const qrDonatePrice = document.getElementById("DonatePrice").value;
+        let qrDonateName = document.getElementById("DonateName").value;
+        let qrDonateMessage = document.getElementById("DonateMessage").value;
+        let qrDonatePrice = document.getElementById("DonatePrice").value;
 
         // Tạo addInfo từ dữ liệu input
-        const addInfo = `${qrDonateName} - ${qrDonateMessage} - ${qrDonatePrice}`;
+        let addInfo = `${qrDonateName} - ${qrDonateMessage} - ${qrDonatePrice}`;
 
         // Chuyển đổi format amount
-        const amount = qrDonatePrice.replace(/\./g, "").replace("₫", "");
+        let amount = qrDonatePrice.replace(/\./g, "").replace("₫", "");
 
         // Cập nhật dữ liệu QR code
         QRData.addInfo = addInfo;
