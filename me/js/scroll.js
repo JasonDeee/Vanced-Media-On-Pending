@@ -1,3 +1,9 @@
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(
+  navigator.userAgent
+)
+  ? true
+  : false;
+
 const TheMainBody = document.body;
 const MainScroll = document.getElementById("main_scroll");
 
@@ -12,7 +18,6 @@ const ScrollResize = () => {
   resizetime = setTimeout(() => {
     bodyHeight = Math.round(MainScroll.getBoundingClientRect().height);
     TheMainBody.style.height = `${bodyHeight}px`;
-    easeScroll();
 
     clearTimeout(resizetime);
   }, 1200);
@@ -20,33 +25,9 @@ const ScrollResize = () => {
 ScrollResize();
 window.addEventListener("resize", ScrollResize);
 
-const li = (a, b, n) => {
-  return (1 - n) * a + n * b;
-};
-
-var sx = 0, // For scroll positions
-  sy = 0;
-var dx = sx, // For container positions And Force (Percentage 70% Recommended)
-  dy = sy,
-  Force = 80;
-
-function easeScroll() {
-  // sx = window.pageXOffset;
-  sy = window.pageYOffset;
-  // console.log(sy);
+if (!isMobile) {
+  const ScrollFunc = () => {
+    MainScroll.style.transform = `translateY(-${window.pageYOffset}px)`;
+  };
+  window.addEventListener("scroll", ScrollFunc);
 }
-
-window.requestAnimationFrame(render);
-function render() {
-  //We calculate our container position by linear interpolation method
-  // dx = li(dx, sx, Force / 1000);
-  dy = li(dy, sy, Force / 1000);
-
-  // dx = Math.floor(dx * 100) / 100;
-  dy = Math.round(dy * 100) / 100;
-  MainScroll.style.transform = `translateY(-${dy}px)`; // Main Momentium Scroll
-  window.requestAnimationFrame(render);
-}
-window.addEventListener("scroll", (e) => {
-  easeScroll(); // Momentium
-});

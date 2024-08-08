@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
 /*	Copyright (c) 2021 marketify
 /*	Author: marketify
 /*	This file is made for CURRENT TEMPLATE
@@ -31,7 +32,7 @@ html {
 }
 
 body {
-  font-family: "Poppins";
+  font-family: "Lexend", sans-serif;
   font-size: 18px;
   line-height: 30px;
   letter-spacing: 0px;
@@ -115,7 +116,7 @@ h5,
 h6 {
   font-weight: 600;
   line-height: 1.5;
-  font-family: "poppins";
+  font-family: "Lexend", sans-serif;
   color: #1a1a1a;
 }
 
@@ -466,7 +467,7 @@ body.dark .loader_line:after {
   color: #000;
   display: inline-block;
   padding: 4px 0px;
-  font-family: "Poppins";
+  font-family: "Lexend", sans-serif;
   font-weight: 500;
 }
 
@@ -642,8 +643,10 @@ body.opened .edina_tm_sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  -webkit-transition: all 0s;
-  transition: all 0s;
+  -webkit-transition: -webkit-transform 0.66s cubic-bezier(0.11, 0.55, 0.44, 0.99);
+  transition: -webkit-transform 0.66s cubic-bezier(0.11, 0.55, 0.44, 0.99);
+  transition: transform 0.66s cubic-bezier(0.11, 0.55, 0.44, 0.99);
+  transition: transform 0.66s cubic-bezier(0.11, 0.55, 0.44, 0.99), -webkit-transform 0.66s cubic-bezier(0.11, 0.55, 0.44, 0.99);
 }
 
 body.opened .edina_tm_mainpart {
@@ -2089,7 +2092,7 @@ body.modal {
   font-size: 16px;
   color: #7e7e7e;
   font-weight: 500;
-  font-family: "Poppins";
+  font-family: "Lexend", sans-serif;
   padding-left: 0px !important;
 }
 
@@ -2107,7 +2110,7 @@ body.modal {
   font-size: 16px;
   color: #7e7e7e;
   font-weight: 500;
-  font-family: "Poppins";
+  font-family: "Lexend", sans-serif;
   height: 50px;
   resize: none;
   padding-left: 0px !important;
