@@ -73,6 +73,19 @@ img.svg {
   height: 15px;
 }
 
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0f172a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
 .svg.custom {
   fill: none;
 }
@@ -859,6 +872,13 @@ body.opened .edina_tm_hero .extra {
   display: -ms-flexbox;
   display: flex;
   padding-top: 40px;
+  gap: 1rem;
+}
+
+.edina_tm_about .wrapper svg {
+  width: auto;
+  height: 64px;
+  fill: #7e7e7e;
 }
 
 .edina_tm_about .desc {
