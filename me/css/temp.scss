@@ -63,24 +63,6 @@ img.svg {
   height: 15px;
 }
 
-<<<<<<< Updated upstream
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #0f172a;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-button {
-  display: none;
-}
-.svg.custom {
-  fill: none;
-}
-=======
->>>>>>> Stashed changes
 ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
   color: $secondary-color;
@@ -714,76 +696,6 @@ body.opened .edina_tm_hero {
   height: auto;
   clear: both;
   float: left;
-<<<<<<< Updated upstream
-  padding-bottom: 150px;
-  padding-top: 100px;
-}
-.edina_tm_about .about_title {
-  width: 100%;
-  float: left;
-}
-.edina_tm_about .about_title h3 {
-  font-size: 60px;
-  font-weight: 800;
-}
-.edina_tm_about .content {
-  width: 100%;
-  height: auto;
-  clear: both;
-  display: flex;
-  padding-top: 60px;
-}
-.edina_tm_about .leftpart {
-  width: 50%;
-}
-.edina_tm_about .leftpart .info {
-  width: 100%;
-  float: left;
-  margin-bottom: 55px;
-}
-.edina_tm_about .leftpart .info h3 {
-  font-size: 22px;
-  font-weight: 400;
-  margin-bottom: 20px;
-}
-.edina_tm_about .leftpart .info h3 span {
-  font-weight: 600;
-}
-.edina_tm_about .leftpart .info p {
-  max-width: 90%;
-}
-.edina_tm_about .my_skills {
-  width: 100%;
-  float: left;
-}
-.edina_tm_about .my_skills .title {
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-.edina_tm_about .wrapper {
-  width: 100%;
-  display: flex;
-  padding-top: 40px;
-  gap: 1rem;
-
-  svg {
-    width: auto;
-    height: 64px;
-    fill: #7e7e7e;
-  }
-}
-.edina_tm_about .desc {
-  max-width: 90%;
-}
-.edina_tm_about .wrapper .left {
-  width: 50%;
-  padding-right: 20px;
-}
-.edina_tm_about .wrapper .right {
-  width: 50%;
-  padding-left: 20px;
-=======
   padding: 100px 0 150px 0;
 
   .about_title {
@@ -920,7 +832,6 @@ body.opened .edina_tm_hero {
       }
     }
   }
->>>>>>> Stashed changes
 }
 
 .dodo_progress {
