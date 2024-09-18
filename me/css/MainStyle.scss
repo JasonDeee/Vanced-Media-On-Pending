@@ -63,7 +63,6 @@ img.svg {
   height: 15px;
 }
 
-<<<<<<< Updated upstream
 ::-webkit-scrollbar {
   width: 4px;
 }
@@ -79,8 +78,6 @@ img.svg {
 .svg.custom {
   fill: none;
 }
-=======
->>>>>>> Stashed changes
 ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
   color: $secondary-color;
@@ -643,7 +640,7 @@ body.opened .edina_tm_mainpart {
   }
 
   .text {
-    max-width: 500px;
+    max-width: 586px;
     margin: 0 auto 32px auto;
     font-size: 16px;
   }
@@ -714,7 +711,6 @@ body.opened .edina_tm_hero {
   height: auto;
   clear: both;
   float: left;
-<<<<<<< Updated upstream
   padding-bottom: 150px;
   padding-top: 100px;
 }
@@ -783,144 +779,6 @@ body.opened .edina_tm_hero {
 .edina_tm_about .wrapper .right {
   width: 50%;
   padding-left: 20px;
-=======
-  padding: 100px 0 150px 0;
-
-  .about_title {
-    width: 100%;
-    float: left;
-
-    h3 {
-      font-size: 60px;
-      font-weight: 800;
-    }
-  }
-
-  .content {
-    width: 100%;
-    height: auto;
-    clear: both;
-    display: flex;
-    padding-top: 60px;
-  }
-
-  .leftpart {
-    width: 50%;
-
-    .info {
-      width: 100%;
-      float: left;
-      margin-bottom: 55px;
-
-      h3 {
-        font-size: 22px;
-        font-weight: 400;
-        margin-bottom: 20px;
-
-        span {
-          font-weight: 600;
-        }
-      }
-
-      p {
-        max-width: 90%;
-      }
-    }
-
-    .my_skills {
-      width: 100%;
-      float: left;
-
-      .title {
-        font-size: 22px;
-        font-weight: 600;
-        margin-bottom: 20px;
-      }
-    }
-  }
-
-  .wrapper {
-    width: 100%;
-    display: flex;
-    padding-top: 40px;
-  }
-
-  .desc {
-    max-width: 90%;
-  }
-
-  .wrapper {
-    .left {
-      width: 50%;
-      padding-right: 20px;
-    }
-
-    .right {
-      width: 50%;
-      padding-left: 20px;
-    }
-  }
-
-  .rightpart {
-    width: 50%;
-    padding-left: 200px;
-
-    .image {
-      position: relative;
-
-      img {
-        position: relative;
-        min-width: 100%;
-        opacity: 0;
-      }
-
-      .main {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        border-radius: 10px;
-      }
-    }
-  }
-
-  .experience {
-    position: absolute;
-    bottom: -50px;
-    left: -50px;
-    z-index: 1;
-    width: 291px;
-    height: 291px;
-    border-radius: 100%;
-    background-color: $primary-color;
-
-    .info {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      text-align: center;
-      width: 100%;
-      transform: translate(-50%, -50%);
-      padding: 10px;
-
-      h3 {
-        font-size: 45px;
-        font-weight: 700;
-        color: $white;
-      }
-
-      span {
-        font-size: 22px;
-        font-weight: 500;
-        color: $white;
-      }
-    }
-  }
->>>>>>> Stashed changes
 }
 
 .dodo_progress {

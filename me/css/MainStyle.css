@@ -55,7 +55,6 @@ img.svg {
   height: 15px;
 }
 
-<<<<<<< Updated upstream
 ::-webkit-scrollbar {
   width: 4px;
 }
@@ -73,8 +72,6 @@ img.svg {
   fill: none;
 }
 
-=======
->>>>>>> Stashed changes
 ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
   color: #7e7e7e;
@@ -682,7 +679,7 @@ body.opened .edina_tm_mainpart {
 }
 
 .edina_tm_hero .text {
-  max-width: 500px;
+  max-width: 586px;
   margin: 0 auto 32px auto;
   font-size: 16px;
 }
@@ -751,7 +748,8 @@ body.opened .edina_tm_hero .extra {
   height: auto;
   clear: both;
   float: left;
-  padding: 100px 0 150px 0;
+  padding-bottom: 150px;
+  padding-top: 100px;
 }
 
 .edina_tm_about .about_title {
@@ -798,12 +796,12 @@ body.opened .edina_tm_hero .extra {
   max-width: 90%;
 }
 
-.edina_tm_about .leftpart .my_skills {
+.edina_tm_about .my_skills {
   width: 100%;
   float: left;
 }
 
-.edina_tm_about .leftpart .my_skills .title {
+.edina_tm_about .my_skills .title {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 20px;
@@ -836,67 +834,6 @@ body.opened .edina_tm_hero .extra {
 .edina_tm_about .wrapper .right {
   width: 50%;
   padding-left: 20px;
-}
-
-.edina_tm_about .rightpart {
-  width: 50%;
-  padding-left: 200px;
-}
-
-.edina_tm_about .rightpart .image {
-  position: relative;
-}
-
-.edina_tm_about .rightpart .image img {
-  position: relative;
-  min-width: 100%;
-  opacity: 0;
-}
-
-.edina_tm_about .rightpart .image .main {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  border-radius: 10px;
-}
-
-.edina_tm_about .experience {
-  position: absolute;
-  bottom: -50px;
-  left: -50px;
-  z-index: 1;
-  width: 291px;
-  height: 291px;
-  border-radius: 100%;
-  background-color: #34495e;
-}
-
-.edina_tm_about .experience .info {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  width: 100%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  padding: 10px;
-}
-
-.edina_tm_about .experience .info h3 {
-  font-size: 45px;
-  font-weight: 700;
-  color: #fff;
-}
-
-.edina_tm_about .experience .info span {
-  font-size: 22px;
-  font-weight: 500;
-  color: #fff;
 }
 
 .dodo_progress {
