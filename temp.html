@@ -15,13 +15,30 @@
 
     <script>
       function handleCredentialResponse(response) {
-        // Xác thực credential
+        // Đảm bảo thư viện google.script.run đã sẵn sàng
         google.script.run
           .withSuccessHandler((message) => {
-            // Xử lý sau khi xác thực thành công
             document.getElementById("message").innerText = message;
-            // Gọi hàm copySpreadsheetAndScripts()
-            google.script.run.copySpreadsheetAndScripts();
+
+            // Gọi hàm sao chép spreadsheet *sau khi* xác nhận google.script.run đã sẵn sàng
+            google.script.run
+              .withSuccessHandler(() => {
+                // Xử lý sau khi sao chép thành công (nếu cần)
+                document.getElementById("message").innerText =
+                  "Đã sao chép thành công";
+              })
+              .withFailureHandler((error) => {
+                // Xử lý lỗi sao chép
+                document.getElementById("message").innerText =
+                  "Lỗi sao chép: " + error;
+                console.error("Lỗi sao chép:", error);
+              })
+              .copySpreadsheetAndScripts();
+          })
+          .withFailureHandler((error) => {
+            console.error("Lỗi xác thực:", error);
+            document.getElementById("message").innerText =
+              "Lỗi xác thực: " + error;
           })
           .verifyCredential(response.credential);
       }
