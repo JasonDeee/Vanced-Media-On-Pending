@@ -1,50 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <meta
-      name="google-signin-client_id"
-      content="153083226508-qmlv5ko26irv72rrshs6g2i3vnr4d1g4.apps.googleusercontent.com"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-      a {
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-      }
-    </style>
+    <title>Your App</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <--- Thư viện GIS
   </head>
   <body>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <div id="g-sign-in-wrapper">
+      <div id="g-sign-in-button"></div>
+      <--- Nút đăng nhập
+    </div>
 
     <div id="message"></div>
 
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
-      function onSignIn(googleUser) {
-        var id_token = googleUser.getAuthResponse().id_token;
+      function handleCredentialResponse(response) {
+        // Gửi credential đến Apps Script để xác minh
         google.script.run
           .withSuccessHandler(displayMessage)
-          .verifyToken(id_token);
+          .verifyCredential(response.credential);
       }
+
+      window.onload = function () {
+        google.accounts.id.initialize({
+          client_id:
+            "153083226508-qmlv5ko26irv72rrshs6g2i3vnr4d1g4.apps.googleusercontent.com",
+          callback: handleCredentialResponse,
+        });
+        google.accounts.id.renderButton(
+          document.getElementById("g-sign-in-button"),
+          { theme: "outline", size: "large" } // customization attributes
+        );
+        google.accounts.id.prompt(); // also display the One Tap dialog
+      };
 
       function displayMessage(message) {
         document.getElementById("message").innerText = message;
-        // Gọi hàm Apps Script khác sau khi đăng nhập thành công
-        // google.script.run.copySpreadsheetAndScripts();
+        google.script.run.copySpreadsheetAndScripts();
       }
     </script>
   </body>
