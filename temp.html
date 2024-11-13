@@ -15,12 +15,16 @@
 
     <script>
       function handleCredentialResponse(response) {
-        // Gửi credential đến Apps Script để xác minh
+        // Xác thực credential
         google.script.run
-          .withSuccessHandler(displayMessage)
+          .withSuccessHandler((message) => {
+            // Xử lý sau khi xác thực thành công
+            document.getElementById("message").innerText = message;
+            // Gọi hàm copySpreadsheetAndScripts()
+            google.script.run.copySpreadsheetAndScripts();
+          })
           .verifyCredential(response.credential);
       }
-
       window.onload = function () {
         google.accounts.id.initialize({
           client_id:
