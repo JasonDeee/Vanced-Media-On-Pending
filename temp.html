@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- https://package.vanced.media/ -->
+    <meta
+      name="google-signin-client_id"
+      content="153083226508-qmlv5ko26irv72rrshs6g2i3vnr4d1g4.apps.googleusercontent.com"
+    />
     <style>
       * {
         margin: 0;
@@ -25,9 +28,24 @@
     </style>
   </head>
   <body>
-    <a
-      href="https://script.google.com/macros/s/AKfycbwlvl-MskMJ-BuS4Zyyi2EOoEJ5GDdmW0tqhh37Mmv5Atgk2PWrGzpzk59pb1e_FQQJ/exec"
-      >Click me</a
-    >
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+
+    <div id="message"></div>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+      function onSignIn(googleUser) {
+        var id_token = googleUser.getAuthResponse().id_token;
+        google.script.run
+          .withSuccessHandler(displayMessage)
+          .verifyToken(id_token);
+      }
+
+      function displayMessage(message) {
+        document.getElementById("message").innerText = message;
+        // Gọi hàm Apps Script khác sau khi đăng nhập thành công
+        // google.script.run.copySpreadsheetAndScripts();
+      }
+    </script>
   </body>
 </html>
