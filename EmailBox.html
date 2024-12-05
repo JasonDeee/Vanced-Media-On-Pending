@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Box</title>
+  </head>
+  <body>
+    <style>
+      .email-box {
+        max-width: 62vw;
+        margin: 20px auto;
+        padding: 16px 32px;
+        background: white;
+        border: 1px solid var(--color-profiles-10, #0c1136);
+        box-shadow: 10px 10px 0px 0px #0c1136;
+      }
+
+      .email-box__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .email-box__text {
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+        flex: 1;
+      }
+
+      .email-box__input-group {
+        display: flex;
+        flex: 1;
+      }
+
+      .email-box__input {
+        flex: 1;
+        padding: 12px 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        font-size: 14px;
+        background: #f5f5f5;
+      }
+
+      .email-box__input::placeholder {
+        color: #666;
+      }
+
+      .email-box__button {
+        min-width: 100px;
+        padding: 12px 20px;
+        background: #e91e63;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .email-box__button:hover {
+        background: #d81557;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .email-box__content {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .email-box__text {
+          text-align: center;
+        }
+      }
+    </style>
+
+    <div class="email-box">
+      <div class="email-box__content">
+        <p class="email-box__text">
+          Trở thành người đầu tiên cập nhật những tài nguyên mới nhất từ Vanced
+          Media.
+        </p>
+        <div class="email-box__input-group">
+          <input type="email" placeholder="Email" class="email-box__input" />
+          <button class="email-box__button"></button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
