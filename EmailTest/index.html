@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Email</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+      }
+      label {
+        font-size: 2rem;
+      }
+      input {
+        width: 38vw;
+        height: 64px;
+        background: #e9e7e7;
+        color: black;
+        border: none;
+        outline: none;
+        border-radius: 8px;
+        padding: 8px;
+      }
+      button {
+        width: 15vw;
+        height: 64px;
+        font-size: 1.4rem;
+        background: #151515;
+        color: white;
+        border: none;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="EmailInput">Nhập Email</label>
+    <input id="EmailInput" type="email" />
+    <button id="submitBtn">Gửi</button>
+    <p id="message" style="color: green"></p>
+  </body>
+  <script>
+    const SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbyQ5akkD8MPyNuL6uAIOctY8shOb4NoOtG2IzykdaJdcxe-fDVZsyu8yIc65S72oqXVFw/exec";
+
+    // Khai báo các elements
+    const emailInput = document.getElementById("EmailInput");
+    const messageEl = document.getElementById("message");
+    const submitBtn = document.getElementById("submitBtn");
+
+    // Hàm validate email
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    submitBtn.addEventListener("click", async function () {
+      // Validate email kỹ hơn
+      if (!emailInput.value || !isValidEmail(emailInput.value)) {
+        messageEl.style.color = "red";
+        messageEl.textContent = "Vui lòng nhập email hợp lệ!";
+        return;
+      }
+
+      try {
+        // Disable nút submit khi đang gửi request
+        submitBtn.disabled = true;
+        messageEl.textContent = "Đang xử lý...";
+
+        const response = await fetch(SCRIPT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            // Thêm các security headers
+            "X-Requested-With": "XMLHttpRequest",
+          },
+          body: JSON.stringify({
+            email: emailInput.value,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+          messageEl.style.color = "green";
+          messageEl.textContent = result.message;
+          emailInput.value = "";
+
+          // Disable form trong 5 giây sau khi submit thành công
+          submitBtn.disabled = true;
+          setTimeout(() => {
+            submitBtn.disabled = false;
+          }, 5000);
+        } else {
+          throw new Error(result.message);
+        }
+      } catch (error) {
+        messageEl.style.color = "red";
+        messageEl.textContent = error.message;
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+
+    // Thêm debounce cho input
+    let typingTimer;
+    const doneTypingInterval = 1000; // 1 giây
+
+    emailInput.addEventListener("input", function () {
+      clearTimeout(typingTimer);
+      typingTimer = setTimeout(() => {
+        if (this.value && !isValidEmail(this.value)) {
+          messageEl.style.color = "red";
+          messageEl.textContent = "Email không hợp lệ";
+        } else {
+          messageEl.textContent = "";
+        }
+      }, doneTypingInterval);
+    });
+  </script>
+</html>
