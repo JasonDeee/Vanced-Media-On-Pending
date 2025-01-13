@@ -62,7 +62,7 @@
       return emailRegex.test(email);
     }
 
-    submitBtn.addEventListener("click", function () {
+    submitBtn.addEventListener("click", async function () {
       // Validate email
       if (!emailInput.value || !isValidEmail(emailInput.value)) {
         messageEl.style.color = "red";
@@ -74,24 +74,36 @@
       submitBtn.disabled = true;
       messageEl.textContent = "Đang xử lý...";
 
-      // Sử dụng google.script.run thay vì fetch
-      google.script.run
-        .withSuccessHandler(function (result) {
+      try {
+        const response = await fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors", // Thử với no-cors
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: emailInput.value,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
           messageEl.style.color = "green";
-          messageEl.textContent = "Đăng ký thành công!";
+          messageEl.textContent = result.message;
           emailInput.value = "";
 
-          // Disable form trong 5 giây
           setTimeout(() => {
             submitBtn.disabled = false;
           }, 5000);
-        })
-        .withFailureHandler(function (error) {
-          messageEl.style.color = "red";
-          messageEl.textContent = error.toString();
-          submitBtn.disabled = false;
-        })
-        .processForm(emailInput.value);
+        } else {
+          throw new Error(result.message);
+        }
+      } catch (error) {
+        messageEl.style.color = "red";
+        messageEl.textContent = error.message;
+        submitBtn.disabled = false;
+      }
     });
 
     // Debounce cho input
@@ -110,5 +122,5 @@
       }, doneTypingInterval);
     });
   </script>
-  <!-- Cors Fix V2 -->
+  <!-- corse fix v2.1 -->
 </html>
