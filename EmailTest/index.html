@@ -79,7 +79,6 @@
           "https://script.google.com/macros/s/AKfycbyQ5akkD8MPyNuL6uAIOctY8shOb4NoOtG2IzykdaJdcxe-fDVZsyu8yIc65S72oqXVFw/exec",
           {
             method: "POST",
-            mode: "no-cors", // Thử với no-cors
             headers: {
               "Content-Type": "application/json",
             },
@@ -89,22 +88,24 @@
           }
         );
 
-        const result = await response.json();
-
-        if (result.status === "success") {
-          messageEl.style.color = "green";
-          messageEl.textContent = result.message;
-          emailInput.value = "";
-
-          setTimeout(() => {
-            submitBtn.disabled = false;
-          }, 5000);
-        } else {
-          throw new Error(result.message);
+        // Kiểm tra nếu response không ok
+        if (!response.ok) {
+          throw new Error("Có lỗi xảy ra khi gửi dữ liệu");
         }
+
+        // Hiển thị thông báo thành công ngay khi gửi thành công
+        messageEl.style.color = "green";
+        messageEl.textContent = "Đăng ký thành công!";
+        emailInput.value = "";
+
+        // Enable lại nút submit sau 5s
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          messageEl.textContent = "";
+        }, 5000);
       } catch (error) {
         messageEl.style.color = "red";
-        messageEl.textContent = error.message;
+        messageEl.textContent = error.message || "Có lỗi xảy ra";
         submitBtn.disabled = false;
       }
     });
@@ -125,5 +126,5 @@
       }, doneTypingInterval);
     });
   </script>
-  <!-- corse fix v2.1 -->
+  <!-- fix v2.2 -->
 </html>
