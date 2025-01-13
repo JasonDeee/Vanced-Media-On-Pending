@@ -80,10 +80,9 @@
 
         const response = await fetch(SCRIPT_URL, {
           method: "POST",
+          mode: "cors",
           headers: {
             "Content-Type": "application/json",
-            // Thêm các security headers
-            "X-Requested-With": "XMLHttpRequest",
           },
           body: JSON.stringify({
             email: emailInput.value,
