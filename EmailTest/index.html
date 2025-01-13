@@ -51,9 +51,6 @@
     <p id="message" style="color: green"></p>
   </body>
   <script>
-    const SCRIPT_URL =
-      "https://script.google.com/macros/s/AKfycbyQ5akkD8MPyNuL6uAIOctY8shOb4NoOtG2IzykdaJdcxe-fDVZsyu8yIc65S72oqXVFw/exec";
-
     // Khai báo các elements
     const emailInput = document.getElementById("EmailInput");
     const messageEl = document.getElementById("message");
@@ -65,56 +62,41 @@
       return emailRegex.test(email);
     }
 
-    submitBtn.addEventListener("click", async function () {
-      // Validate email kỹ hơn
+    submitBtn.addEventListener("click", function () {
+      // Validate email
       if (!emailInput.value || !isValidEmail(emailInput.value)) {
         messageEl.style.color = "red";
         messageEl.textContent = "Vui lòng nhập email hợp lệ!";
         return;
       }
 
-      try {
-        // Disable nút submit khi đang gửi request
-        submitBtn.disabled = true;
-        messageEl.textContent = "Đang xử lý...";
+      // Disable nút submit
+      submitBtn.disabled = true;
+      messageEl.textContent = "Đang xử lý...";
 
-        const response = await fetch(SCRIPT_URL, {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: emailInput.value,
-          }),
-        });
-
-        const result = await response.json();
-
-        if (result.status === "success") {
+      // Sử dụng google.script.run thay vì fetch
+      google.script.run
+        .withSuccessHandler(function (result) {
           messageEl.style.color = "green";
-          messageEl.textContent = result.message;
+          messageEl.textContent = "Đăng ký thành công!";
           emailInput.value = "";
 
-          // Disable form trong 5 giây sau khi submit thành công
-          submitBtn.disabled = true;
+          // Disable form trong 5 giây
           setTimeout(() => {
             submitBtn.disabled = false;
           }, 5000);
-        } else {
-          throw new Error(result.message);
-        }
-      } catch (error) {
-        messageEl.style.color = "red";
-        messageEl.textContent = error.message;
-      } finally {
-        submitBtn.disabled = false;
-      }
+        })
+        .withFailureHandler(function (error) {
+          messageEl.style.color = "red";
+          messageEl.textContent = error.toString();
+          submitBtn.disabled = false;
+        })
+        .processForm(emailInput.value);
     });
 
-    // Thêm debounce cho input
+    // Debounce cho input
     let typingTimer;
-    const doneTypingInterval = 1000; // 1 giây
+    const doneTypingInterval = 1000;
 
     emailInput.addEventListener("input", function () {
       clearTimeout(typingTimer);
@@ -128,4 +110,5 @@
       }, doneTypingInterval);
     });
   </script>
+  <!-- Cors Fix V2 -->
 </html>
