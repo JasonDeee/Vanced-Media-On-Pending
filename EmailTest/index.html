@@ -62,8 +62,6 @@
       return emailRegex.test(email);
     }
 
-    const PROXY_URL = "https://your-proxy-server.com/proxy";
-
     submitBtn.addEventListener("click", async function () {
       if (!emailInput.value || !isValidEmail(emailInput.value)) {
         messageEl.style.color = "red";

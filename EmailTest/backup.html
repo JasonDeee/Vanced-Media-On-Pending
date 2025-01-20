@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .Vx-FooterRegistration-Holder {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        max-width: unset !important;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        padding: 16px 32px;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: start;
+        gap: 16px;
+        border: 1px solid var(--global-palette3);
+        background: var(--global-palette9);
+        -webkit-box-shadow: 4px 4px 0 var(--global-palette3);
+        box-shadow: 4px 4px 0 var(--global-palette3);
+        position: absolute;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+
+      .Vx-FooterRegistration-Holder .Vx-Footerregistration-label {
+        color: var(--global-palette3);
+        font-size: 0.9rem;
+        font-weight: 400;
+        line-height: normal;
+        height: 100%;
+        margin: 0;
+      }
+
+      .Vx-FooterRegistration-Holder .Registration-input {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        gap: 0;
+        position: relative;
+        height: 100%;
+        border: 1px solid var(--global-palette3);
+        -webkit-box-shadow: 4px 4px 0 var(--global-palette3);
+        box-shadow: 4px 4px 0 var(--global-palette3);
+      }
+
+      .Vx-FooterRegistration-Holder .Registration-input input {
+        background: var(--global-palette8);
+        outline: none;
+        border: none;
+        border-radius: 0 !important;
+        display: block;
+      }
+
+      .Vx-FooterRegistration-Holder .Registration-input button {
+        border: none;
+        outline: none;
+        background: var(--global-palette1);
+        padding: 0 32px;
+        -webkit-transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
+        transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
+        border-radius: 0 !important;
+      }
+
+      .Vx-FooterRegistration-Holder .Registration-input button:hover {
+        background: var(--global-palette2);
+      }
+    </style>
+
+    <div class="Vx-FooterRegistration-Holder">
+      <p class="Vx-Footerregistration-label">
+        Trở thành người đầu tiên cập nhật<br />những tài liệu mới nhất từ Vanced
+        Media.
+      </p>
+      <div class="Registration-input">
+        <input type="email" id="EmailInput" placeholder="Nhập email của bạn" />
+        <button id="Registration_submitBtn">Gửi</button>
+      </div>
+    </div>
+
+    <script>
+      // Khai báo các elements
+      const emailInput = document.getElementById("EmailInput");
+      const submitBtn = document.getElementById("Registration_submitBtn");
+
+      // Hàm validate email
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      submitBtn.addEventListener("click", async function () {
+        if (!emailInput.value || !isValidEmail(emailInput.value)) {
+          submitBtn.textContent = "Email không hợp lệ";
+          submitBtn.style.background = "var(--global-palette-alert)";
+          setTimeout(() => {
+            submitBtn.textContent = "Gửi";
+            submitBtn.style.background = "var(--global-palette1)";
+          }, 2000);
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Đang xử lý...";
+
+        // Tạo URL với parameters
+        const url = `https://script.google.com/macros/s/AKfycbyQ5akkD8MPyNuL6uAIOctY8shOb4NoOtG2IzykdaJdcxe-fDVZsyu8yIc65S72oqXVFw/exec?email=${encodeURIComponent(
+          emailInput.value
+        )}`;
+
+        // Tạo script element
+        const script = document.createElement("script");
+        script.src = url;
+
+        // Xử lý callback
+        window.callback = function (response) {
+          if (response.status === "success") {
+            submitBtn.textContent = "Đăng ký thành công!";
+            submitBtn.classList.add("Vx_Registration_Completed");
+            emailInput.value = "";
+          } else {
+            submitBtn.textContent = response.message || "Có lỗi xảy ra";
+            submitBtn.style.background = "var(--global-palette-alert)";
+            setTimeout(() => {
+              submitBtn.textContent = "Gửi";
+              submitBtn.style.background = "var(--global-palette1)";
+            }, 2000);
+          }
+          submitBtn.disabled = false;
+          document.body.removeChild(script);
+        };
+
+        // Thêm script vào document
+        document.body.appendChild(script);
+      });
+
+      // Debounce cho input
+      let typingTimer;
+      const doneTypingInterval = 1000;
+
+      emailInput.addEventListener("input", function () {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(() => {
+          if (this.value && !isValidEmail(this.value)) {
+            submitBtn.textContent = "Email không hợp lệ";
+            submitBtn.style.background = "var(--global-palette-alert)";
+          } else {
+            submitBtn.textContent = "Gửi";
+            submitBtn.style.background = "var(--global-palette1)";
+          }
+        }, doneTypingInterval);
+      });
+    </script>
+  </body>
+</html>

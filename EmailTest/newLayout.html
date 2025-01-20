@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email New Layout</title>
+  </head>
+  <body>
+    <style>
+      .Vx-FooterRegistration-Holder {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: start;
+        gap: 16px;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        max-width: unset !important;
+        padding: 16px 32px;
+        position: absolute;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        background: var(--global-palette9);
+        border: 1px solid var(--global-palette3);
+        -webkit-box-shadow: 4px 4px 0 var(--global-palette3);
+        box-shadow: 4px 4px 0 var(--global-palette3);
+      }
+
+      .Vx-FooterRegistration-Holder .Vx-Footerregistration-label {
+        color: var(--global-palette3);
+        font-size: 0.9rem;
+        font-weight: 400;
+        line-height: normal;
+        height: 100%;
+        margin: 0;
+      }
+
+      .Vx-FooterRegistration-Holder .Registration-input {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: start;
+        position: relative;
+        border: 1px solid var(--global-palette3);
+        -webkit-box-shadow: 4px 4px 0 var(--global-palette3);
+        box-shadow: 4px 4px 0 var(--global-palette3);
+        -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+      }
+
+      .Vx-FooterRegistration-Holder .Registration-input input {
+        background: var(--global-palette8);
+        outline: none;
+        border: none;
+        border-radius: 0 !important;
+        display: block;
+        color: var(--global-palette3);
+        font-size: 1rem;
+        font-weight: 400;
+      }
+
+      .Vx-FooterRegistration-Holder
+        .Registration-input
+        input::-webkit-input-placeholder {
+        opacity: 0.68;
+        color: inherit;
+      }
+
+      .Vx-FooterRegistration-Holder
+        .Registration-input
+        input:-ms-input-placeholder {
+        opacity: 0.68;
+        color: inherit;
+      }
+
+      .Vx-FooterRegistration-Holder
+        .Registration-input
+        input::-ms-input-placeholder {
+        opacity: 0.68;
+        color: inherit;
+      }
+
+      .Vx-FooterRegistration-Holder .Registration-input input::placeholder {
+        opacity: 0.68;
+        color: inherit;
+      }
+
+      .Vx-FooterRegistration-Holder .Registration-input button {
+        border: none;
+        outline: none;
+        background: var(--global-palette1);
+        padding: 0 32px;
+        border-radius: 0 !important;
+        -webkit-transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
+        transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
+        -ms-flex-item-align: stretch;
+        -ms-grid-row-align: stretch;
+        align-self: stretch;
+      }
+
+      .Vx-FooterRegistration-Holder .Registration-input button:hover {
+        background: var(--global-palette2);
+      }
+
+      .Vx-FooterRegistration-Holder
+        .Registration-input
+        button.Vx_Registration_Completed {
+        background: var(--global-palette3);
+        cursor: default;
+      }
+
+      .Vx-FooterRegistration-Holder
+        .Registration-input
+        button.Vx_Registration_Completed:hover {
+        background: var(--global-palette1);
+      }
+
+      .Vx-FooterRegistration-Holder
+        .Registration-input
+        button.Vx_Registration_Error {
+        background: var(--global-palette3);
+        cursor: not-allowed;
+        font-size: 0.8rem;
+      }
+
+      .Vx-FooterRegistration-Holder
+        .Registration-input
+        button.Vx_Registration_Error:hover {
+        background: var(--global-palette3);
+      }
+      /*# sourceMappingURL=styles.css.map */
+    </style>
+
+    <div class="Vx-FooterRegistration-Holder">
+      <p class="Vx-Footerregistration-label">
+        Trở thành người đầu tiên cập nhật<br />những tài liệu mới nhất từ Vanced
+        Media.<br />Nhớ thêm CloudFlare vào đây khi public trang!
+      </p>
+      <div class="Registration-input">
+        <input type="email" id="EmailInput" placeholder="Email của bạn" />
+        <button id="Registration_submitBtn">Gửi</button>
+      </div>
+    </div>
+
+    <script>
+      // Khai báo các elements
+      const emailInput = document.getElementById("EmailInput");
+      const submitBtn = document.getElementById("Registration_submitBtn");
+
+      // Hàm validate email
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      // Reset button state
+      function resetButton() {
+        submitBtn.textContent = "Gửi";
+        submitBtn.classList.remove("Vx_Registration_Error");
+        submitBtn.disabled = false;
+      }
+
+      // Validate và update button state
+      function validateEmail() {
+        if (!emailInput.value) {
+          submitBtn.textContent = "Hãy nhập Email";
+          submitBtn.classList.add("Vx_Registration_Error");
+          submitBtn.disabled = true;
+          return false;
+        }
+
+        if (!isValidEmail(emailInput.value)) {
+          submitBtn.textContent = "Email không hợp lệ";
+          submitBtn.classList.add("Vx_Registration_Error");
+          submitBtn.disabled = true;
+          return false;
+        }
+
+        resetButton();
+        return true;
+      }
+
+      // Event listeners cho input
+      emailInput.addEventListener("focus", resetButton);
+      emailInput.addEventListener("blur", validateEmail);
+
+      submitBtn.addEventListener("click", async function () {
+        if (!validateEmail()) return;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Đang xử lý...";
+
+        // Tạo URL với parameters
+        const url = `https://script.google.com/macros/s/AKfycbyQ5akkD8MPyNuL6uAIOctY8shOb4NoOtG2IzykdaJdcxe-fDVZsyu8yIc65S72oqXVFw/exec?email=${encodeURIComponent(
+          emailInput.value
+        )}`;
+
+        // Tạo script element
+        const script = document.createElement("script");
+        script.src = url;
+
+        // Xử lý callback
+        window.callback = function (response) {
+          if (response.status === "success") {
+            submitBtn.textContent = "Thành công!";
+            submitBtn.classList.add("Vx_Registration_Completed");
+            emailInput.value = "";
+          } else {
+            submitBtn.textContent = response.message || "Có lỗi xảy ra";
+            submitBtn.classList.add("Vx_Registration_Error");
+            submitBtn.disabled = true;
+          }
+          document.body.removeChild(script);
+        };
+
+        // Thêm script vào document
+        document.body.appendChild(script);
+      });
+    </script>
+  </body>
+</html>

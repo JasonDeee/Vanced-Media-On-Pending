@@ -1,0 +1,128 @@
+.Vx-FooterRegistration-Holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  gap: 16px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: unset !important;
+  padding: 16px 32px;
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background: var(--global-palette9);
+  border: 1px solid var(--global-palette3);
+  -webkit-box-shadow: 4px 4px 0 var(--global-palette3);
+          box-shadow: 4px 4px 0 var(--global-palette3);
+}
+
+.Vx-FooterRegistration-Holder .Vx-Footerregistration-label {
+  color: var(--global-palette3);
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: normal;
+  height: 100%;
+  margin: 0;
+}
+
+.Vx-FooterRegistration-Holder .Registration-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  position: relative;
+  border: 1px solid var(--global-palette3);
+  -webkit-box-shadow: 4px 4px 0 var(--global-palette3);
+          box-shadow: 4px 4px 0 var(--global-palette3);
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.Vx-FooterRegistration-Holder .Registration-input input {
+  background: var(--global-palette8);
+  outline: none;
+  border: none;
+  border-radius: 0 !important;
+  display: block;
+  color: var(--global-palette3);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.Vx-FooterRegistration-Holder .Registration-input input::-webkit-input-placeholder {
+  opacity: 0.68;
+  color: inherit;
+}
+
+.Vx-FooterRegistration-Holder .Registration-input input:-ms-input-placeholder {
+  opacity: 0.68;
+  color: inherit;
+}
+
+.Vx-FooterRegistration-Holder .Registration-input input::-ms-input-placeholder {
+  opacity: 0.68;
+  color: inherit;
+}
+
+.Vx-FooterRegistration-Holder .Registration-input input::placeholder {
+  opacity: 0.68;
+  color: inherit;
+}
+
+.Vx-FooterRegistration-Holder .Registration-input button {
+  border: none;
+  outline: none;
+  background: var(--global-palette1);
+  padding: 0 32px;
+  border-radius: 0 !important;
+  -webkit-transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
+  transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+}
+
+.Vx-FooterRegistration-Holder .Registration-input button:hover {
+  background: var(--global-palette2);
+}
+
+.Vx-FooterRegistration-Holder .Registration-input button.Vx_Registration_Completed {
+  background: var(--global-palette3);
+  cursor: default;
+}
+
+.Vx-FooterRegistration-Holder .Registration-input button.Vx_Registration_Completed:hover {
+  background: var(--global-palette1);
+}
+
+.Vx-FooterRegistration-Holder .Registration-input button.Vx_Registration_Error {
+  background: var(--global-palette3);
+  cursor: not-allowed;
+  font-size: 0.8rem;
+}
+
+.Vx-FooterRegistration-Holder .Registration-input button.Vx_Registration_Error:hover {
+  background: var(--global-palette3);
+}
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,106 @@
+// Mixins cho flexbox
+@mixin flex($direction: row, $align: center, $justify: start, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+// Mixin cho box shadow với border
+@mixin box-border {
+  border: 1px solid var(--global-palette3);
+  box-shadow: 4px 4px 0 var(--global-palette3);
+}
+
+// Main styles
+.Vx-FooterRegistration-Holder {
+  @include flex(row, stretch, start, 16px);
+
+  width: fit-content;
+  max-width: unset !important;
+  padding: 16px 32px;
+  position: absolute;
+  transform: translateY(-50%);
+  background: var(--global-palette9);
+  @include box-border;
+
+  // Label styles
+  .Vx-Footerregistration-label {
+    color: var(--global-palette3);
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: normal;
+    height: 100%;
+    margin: 0;
+  }
+
+  // Input container
+  .Registration-input {
+    @include flex;
+    // height: 100%;
+    position: relative;
+    @include box-border;
+
+    align-items: stretch;
+
+    // Input field
+    input {
+      background: var(--global-palette8);
+      outline: none;
+      border: none;
+      border-radius: 0 !important;
+      display: block;
+      color: var(--global-palette3);
+
+      font-size: 1rem;
+      font-weight: 400;
+
+      &::placeholder {
+        // display: inline-block;
+        opacity: 0.68;
+        color: inherit;
+      }
+    }
+
+    // Submit button
+    button {
+      border: none;
+      outline: none;
+      background: var(--global-palette1);
+      padding: 0 32px;
+      border-radius: 0 !important;
+      transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
+
+      align-self: stretch;
+
+      &:hover {
+        background: var(--global-palette2);
+      }
+
+      // Trạng thái completed
+      &.Vx_Registration_Completed {
+        background: var(--global-palette3);
+        cursor: default;
+
+        &:hover {
+          background: var(--global-palette1);
+        }
+      }
+
+      // Thêm trạng thái error
+      &.Vx_Registration_Error {
+        background: var(--global-palette3);
+        cursor: not-allowed;
+
+        font-size: 0.8rem;
+
+        &:hover {
+          background: var(--global-palette3);
+        }
+      }
+    }
+  }
+}
