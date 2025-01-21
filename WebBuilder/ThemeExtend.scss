@@ -1,0 +1,329 @@
+@charset "UTF-8";
+
+$transition-default: all 0.88s cubic-bezier(0.25, 0, 0, 1);
+$transition-medium: all 0.66s cubic-bezier(0.25, 0, 0, 1);
+$transition-long: all 1.33s cubic-bezier(0.25, 0, 0, 1);
+
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: var(--e-global-color-primary);
+  transition: $transition-default;
+
+  &:hover {
+    background-color: var(--global-palette8);
+    width: 8px;
+  }
+
+  &-track {
+    background-color: none;
+    transition: $transition-default;
+
+    &:hover {
+      background-color: none;
+    }
+  }
+
+  &-thumb {
+    background: var(--e-global-color-secondary);
+    border-radius: 16px;
+    transition: $transition-default;
+    cursor: n-resize;
+  }
+}
+
+.SwitchColored {
+  .site-header-row-container-inner {
+    border: none;
+    height: 100px;
+  }
+
+  .has-logo-image {
+    background-image: url("https://package.vanced.media/Assets/VancedMedia-Logo-White.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    img {
+      opacity: 0;
+    }
+  }
+}
+
+:root .SwitchColored {
+  --global-palette1: #e72166 !important;
+  --global-palette2: #ffffff !important;
+  --global-palette3: #ffffff !important;
+  --global-palette4: #ffffff !important;
+  --global-palette5: #ffffff !important;
+  --global-palette6: #7081ff !important;
+  --global-palette7: #c9c7c7 !important;
+  --global-palette8: #e9e7e7 !important;
+  --global-palette9: #0c1136 !important;
+}
+
+.LightButtonHover {
+  .elementor-button {
+    transition: $transition-medium;
+    background-color: var(--e-global-color-accent) !important;
+
+    &:hover {
+      box-shadow: 4px 4px 0px 0px #0c1136 !important;
+    }
+  }
+}
+
+.SpringCodeCopyButton {
+  cursor: pointer;
+}
+
+.StringCodeHolder {
+  pre,
+  code {
+    padding: 0 !important;
+    background: none;
+    display: flex;
+  }
+
+  pre {
+    max-height: 80%;
+    overflow: scroll;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--global-palette8);
+  }
+}
+
+.QR_TurnButton {
+  cursor: pointer;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  transition: $transition-medium;
+  position: relative;
+
+  .elementor-widget-html .elementor-widget-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    path {
+      transition: $transition-medium;
+    }
+  }
+
+  &::before {
+    transition: $transition-medium;
+    content: "";
+    box-sizing: border-box !important;
+    background: var(--e-global-color-secondary);
+    width: 0;
+    height: 0;
+    left: 16%;
+    top: 16%;
+    position: absolute;
+    z-index: -1;
+    background-clip: content-box;
+    padding: 0;
+    margin: 0;
+    border: none !important;
+  }
+
+  &:hover {
+    transform: scale(1.23);
+
+    path {
+      stroke: var(--e-global-color-primary);
+    }
+
+    &::before {
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+.Vx_Donate_Section {
+  h1 {
+    margin-top: 0 !important;
+  }
+
+  .Donater_Name,
+  .Donater_Messages {
+    input,
+    textarea {
+      outline: none;
+      border: none;
+      box-shadow: none;
+      font-size: 1rem;
+      color: var(--global-palette2);
+      transition: $transition-default, height 0s linear, width 0s linear;
+
+      &:placeholder-shown {
+        color: var(--global-palette2) !important;
+        opacity: 0.89;
+        font-size: 0.86rem;
+        font-weight: 400;
+      }
+
+      &:focus,
+      &:valid {
+        color: var(--e-global-color-secondary);
+      }
+
+      &:hover {
+        color: var(--e-global-color-accent);
+      }
+    }
+
+    textarea {
+      &::-webkit-resizer {
+        display: block;
+        box-sizing: border-box;
+        width: 4px;
+        height: 4px;
+        border: solid;
+        border-width: 0px 2px 2px 0;
+        color: var(--e-global-color-secondary);
+      }
+
+      &::-webkit-scrollbar {
+        width: 8px;
+
+        &-thumb {
+          background: var(--global-palette8);
+        }
+      }
+    }
+  }
+
+  .Donate_CreateQR {
+    cursor: pointer;
+  }
+}
+
+#QR_ClientForm {
+  transition: $transition-long;
+  transform: translateX(-100vw);
+
+  &.qrActive {
+    transform: none;
+  }
+}
+
+#QR_Generated_Section {
+  * {
+    transition: $transition-long;
+  }
+
+  .elementor-divider span {
+    width: 0;
+  }
+
+  #QR_TurnBack {
+    transform: translateY(-130%);
+  }
+
+  .QR_TurnBackText {
+    transform: translateY(-64px);
+  }
+
+  .QR_GeneratedHolder {
+    transform: translateX(100vw);
+
+    #QRImage {
+      transform: scale(0.78);
+    }
+  }
+
+  #QR_Generated_Heading,
+  #QR_Generated_Description,
+  #QR_TurnBack_Box {
+    transform: translateY(50vh);
+  }
+
+  &.qrActive {
+    * {
+      transition-delay: 422ms;
+    }
+
+    .elementor-divider span {
+      width: 100% !important;
+    }
+
+    #QR_TurnBack {
+      transition-delay: 1666ms;
+      transform: none;
+    }
+
+    .QR_TurnBackText {
+      transition-delay: 2222ms;
+      transform: none;
+    }
+
+    .QR_GeneratedHolder {
+      transform: none;
+
+      #QRImage {
+        transition-delay: 2222ms;
+        transform: none;
+        mix-blend-mode: multiply;
+      }
+    }
+
+    #QRUpdateButton {
+      cursor: pointer !important;
+      transition: $transition-long !important;
+    }
+
+    #QR_Generated_Heading,
+    #QR_Generated_Description,
+    #QR_TurnBack_Box {
+      transform: none;
+    }
+
+    #QR_Generated_Heading {
+      transition-delay: 1622ms;
+    }
+
+    #QR_Generated_Description {
+      transition-delay: 2022ms;
+    }
+
+    #QR_TurnBack_Box {
+      transition-delay: 2422ms;
+    }
+  }
+}
+
+#QR_Normal_Pending_Icon {
+  transition: $transition-long;
+  gap: -16px;
+  transform: scale(0.32);
+  opacity: 0;
+
+  &.qrActive {
+    gap: 0;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  footer {
+    margin-top: 48px;
+  }
+  .Vx_PostHolder {
+    border: 1px solid var(--global-palette3);
+  }
+  .site-footer-wrap {
+    .footer-navigation .menu {
+      max-width: 512px;
+
+      a {
+        width: 156px;
+      }
+    }
+  }
+}

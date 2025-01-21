@@ -817,6 +817,33 @@ article.sticky {
   &.loop-entry {
     border: 1px solid var(--global-palette3);
     margin: -0.5px;
+    .entry-content-wrap {
+      padding-top: 0;
+
+      .entry-footer {
+        .more-link-wrap {
+          .post-more-link {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: start;
+            align-items: end;
+            gap: 8px;
+            line-height: 1rem;
+          }
+
+          a span:is(.svg-baseline) {
+            border-bottom: 1px solid var(--global-palette3);
+            flex: auto;
+            height: 0.8rem;
+            display: inline-block;
+            svg {
+              display: none !important;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -1402,7 +1429,9 @@ a.post-more-link:hover {
 }
 .entry-hero {
   position: relative;
-  margin-bottom: 2rem;
+  &.post-archive-hero-section {
+    margin-bottom: 2rem;
+  }
 }
 .hero-section-overlay {
   position: absolute;
