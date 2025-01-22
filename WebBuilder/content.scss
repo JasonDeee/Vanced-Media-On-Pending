@@ -710,6 +710,7 @@ object {
   border-left: 1px solid var(--global-palette7);
   border-bottom: 1px solid var(--global-palette7);
 }
+
 .grid-cols {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -723,6 +724,105 @@ object {
     row-gap: 0 !important;
     padding-left: 5vw;
     padding-right: 5vw;
+
+    article:is(.category-tai-nguyen) {
+      &:is(.entry.loop-entry:first-child) {
+        grid-column: span 2;
+        grid-row: span 2;
+        flex-direction: column;
+      }
+    }
+
+    article:is(.category-post) {
+      &:is(.entry.loop-entry:first-child) {
+        grid-column: span 3;
+        flex-direction: row-reverse;
+      }
+
+      .entry-content-wrap {
+        position: relative;
+        margin-top: -1rem;
+
+        .entry-header {
+          margin: 0;
+        }
+
+        .entry-meta {
+          position: absolute;
+          margin: 0;
+          padding: 0 32px 32px 32px;
+
+          bottom: 0;
+          left: 0;
+          width: 100%;
+
+          line-height: 0.8rem;
+
+          &::after {
+            content: "";
+            display: inline-block;
+
+            border-bottom: 1px solid var(--global-palette3);
+            margin-left: 16px;
+            flex: auto;
+          }
+        }
+        .entry-summary {
+          margin: 0;
+          margin-bottom: 2rem;
+        }
+
+        .entry-taxonomies,
+        .entry-footer {
+          display: none;
+        }
+      }
+    }
+
+    article:is(.entry.loop-entry:first-child) {
+      display: flex;
+      padding: 32px;
+      justify-content: space-between;
+      gap: 32px;
+
+      a {
+        padding: 0;
+        width: calc(34.2vw - 48px);
+        height: calc((34.2vw - 48px) * 2 / 3);
+        .post-thumbnail-inner {
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+      }
+      @media screen and (min-width: 1600px) {
+        a {
+          width: 100%;
+          aspect-ratio: 3 / 2;
+          height: 100%;
+        }
+      }
+
+      .entry-content-wrap {
+        max-width: 62%;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+        padding: 0;
+
+        // .entry-header {
+        //         margin: 0;
+        //       }
+        .entry-meta {
+          padding: 0;
+        }
+        .entry-summary {
+          flex: auto;
+        }
+      }
+    }
   }
 }
 .wp-site-blocks .grid-cols:before {
@@ -779,7 +879,7 @@ object {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .grid-lg-col-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .grid-lg-col-5 {
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -808,6 +908,15 @@ object {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
+@media screen and (min-width: 1600px) {
+  .grid-lg-col-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .grid-xl-col-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 article.sticky {
   font-size: inherit;
 }
@@ -817,6 +926,7 @@ article.sticky {
   &.loop-entry {
     border: 1px solid var(--global-palette3);
     margin: -0.5px;
+
     .entry-content-wrap {
       padding-top: 0;
 
@@ -837,9 +947,18 @@ article.sticky {
             flex: auto;
             height: 0.8rem;
             display: inline-block;
+
             svg {
               display: none !important;
             }
+            //             @media screen and (min-width: 1600px) {
+            //   .grid-lg-col-4 {
+            //     grid-template-columns: repeat(4, minmax(0, 1fr));
+            //   }
+            //   .grid-xl-col-4 {
+            //     grid-template-columns: repeat(4, minmax(0, 1fr));
+            //   }
+            // }
           }
         }
       }
@@ -1163,7 +1282,7 @@ article.sticky {
   bottom: 2rem;
   left: 2rem;
   right: 2rem;
-  border: 1px solid var(--global-palette3);
+  border: 2px solid var(--global-palette3);
 
   img {
     object-fit: cover;
@@ -1314,12 +1433,19 @@ article.sticky {
   margin-left: 0.8em;
 }
 .loop-entry .entry-header .entry-title {
+  font-size: 1.42rem;
   margin: 0;
 }
 .loop-entry .entry-summary p,
 .loop-entry .entry-header .entry-meta {
   margin: 1em 0;
 }
+.post-archive {
+  .loop-entry .entry-summary p {
+    font-size: 1rem;
+  }
+}
+
 .updated:not(.published) {
   display: none;
 }
