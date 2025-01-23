@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .has-drop-cap:not(:focus):first-letter {
   float: left;
   line-height: 1;
@@ -919,6 +920,98 @@ a:where(
   padding-right: 5vw;
 }
 
+.grid-cols.post-archive article:is(.entry.loop-entry:first-child) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 32px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 32px;
+  position: relative;
+}
+
+.grid-cols.post-archive article:is(.entry.loop-entry:first-child)::after {
+  position: absolute;
+  background-color: var(--global-palette3);
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: var(--global-palette9);
+  height: 6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.grid-cols.post-archive article:is(.entry.loop-entry:first-child) a:is(.post-thumbnail) {
+  padding: 0;
+  width: calc(34.2vw - 48px);
+  height: calc((34.2vw - 48px) * 2 / 3);
+}
+
+.grid-cols.post-archive article:is(.entry.loop-entry:first-child) a:is(.post-thumbnail) .post-thumbnail-inner {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@media screen and (min-width: 1600px) {
+  .grid-cols.post-archive article:is(.entry.loop-entry:first-child) a:is(.post-thumbnail) {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    height: 100%;
+  }
+}
+
+.grid-cols.post-archive article:is(.entry.loop-entry:first-child) .entry-content-wrap {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 0;
+  padding: 0;
+}
+
+.grid-cols.post-archive article:is(.entry.loop-entry:first-child) .entry-content-wrap .entry-meta {
+  padding: 0;
+}
+
+.grid-cols.post-archive article:is(.entry.loop-entry:first-child) .entry-content-wrap .entry-summary {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+}
+
+.grid-cols.post-archive article:is(.category-tai-nguyen) .entry-content-wrap {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
+.grid-cols.post-archive article:is(.category-tai-nguyen) .entry-content-wrap .entry-meta,
+.grid-cols.post-archive article:is(.category-tai-nguyen) .entry-content-wrap .entry-taxonomies {
+  margin: 0;
+}
+
+.grid-cols.post-archive article:is(.category-tai-nguyen) .entry-content-wrap .entry-summary {
+  margin: 0;
+  margin-top: 1rem;
+}
+
+.grid-cols.post-archive article:is(.category-tai-nguyen) .entry-content-wrap .entry-summary p {
+  margin: 0;
+}
+
 .grid-cols.post-archive article:is(.category-tai-nguyen):is(.entry.loop-entry:first-child) {
   grid-column: span 2;
   grid-row: span 2;
@@ -926,6 +1019,29 @@ a:where(
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  padding-top: calc(4rem + 64px);
+}
+
+.grid-cols.post-archive article:is(.category-tai-nguyen):is(.entry.loop-entry:first-child)::after {
+  content: "Nổi bật";
+  display: inline-block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 3rem;
+}
+
+.grid-cols.post-archive article:is(.category-tai-nguyen):is(.entry.loop-entry:first-child) a:is(.post-thumbnail) {
+  height: auto;
+}
+
+.grid-cols.post-archive article:is(.category-tai-nguyen):is(.entry.loop-entry:first-child) .entry-content-wrap {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
 }
 
 .grid-cols.post-archive article:is(.category-post):is(.entry.loop-entry:first-child) {
@@ -934,6 +1050,14 @@ a:where(
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
+}
+
+.grid-cols.post-archive article:is(.category-post):is(.entry.loop-entry:first-child)::after {
+  content: "Mới nhất";
+}
+
+.grid-cols.post-archive article:is(.category-post):is(.entry.loop-entry:first-child) .entry-content-wrap {
+  max-width: 62%;
 }
 
 .grid-cols.post-archive article:is(.category-post) .entry-content-wrap {
@@ -973,64 +1097,6 @@ a:where(
 .grid-cols.post-archive article:is(.category-post) .entry-content-wrap .entry-taxonomies,
 .grid-cols.post-archive article:is(.category-post) .entry-content-wrap .entry-footer {
   display: none;
-}
-
-.grid-cols.post-archive article:is(.entry.loop-entry:first-child) {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 32px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  gap: 32px;
-}
-
-.grid-cols.post-archive article:is(.entry.loop-entry:first-child) a {
-  padding: 0;
-  width: calc(34.2vw - 48px);
-  height: calc((34.2vw - 48px) * 2 / 3);
-}
-
-.grid-cols.post-archive article:is(.entry.loop-entry:first-child) a .post-thumbnail-inner {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-@media screen and (min-width: 1600px) {
-  .grid-cols.post-archive article:is(.entry.loop-entry:first-child) a {
-    width: 100%;
-    aspect-ratio: 3 / 2;
-    height: 100%;
-  }
-}
-
-.grid-cols.post-archive article:is(.entry.loop-entry:first-child) .entry-content-wrap {
-  max-width: 62%;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin-top: 0;
-  padding: 0;
-}
-
-.grid-cols.post-archive article:is(.entry.loop-entry:first-child) .entry-content-wrap .entry-meta {
-  padding: 0;
-}
-
-.grid-cols.post-archive article:is(.entry.loop-entry:first-child) .entry-content-wrap .entry-summary {
-  -webkit-box-flex: 1;
-      -ms-flex: auto;
-          flex: auto;
 }
 
 .wp-site-blocks .grid-cols:before {
