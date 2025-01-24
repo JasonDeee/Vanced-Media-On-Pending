@@ -732,6 +732,11 @@ object {
 
     article:is(.entry.loop-entry) {
       a:is(.post-thumbnail) {
+        padding-bottom: 0;
+        aspect-ratio: 3 / 2;
+        margin: 32px;
+        position: relative;
+        height: auto;
         * {
           transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
         }
@@ -779,6 +784,7 @@ object {
         width: calc(34.2vw - 48px);
         height: auto;
         aspect-ratio: 3 / 2;
+        margin: 0;
         // height: calc((34.2vw - 48px) * 2 / 3);
 
         .post-thumbnail-inner {
@@ -790,7 +796,7 @@ object {
       }
       @media screen and (min-width: 1600px) {
         a:is(.post-thumbnail) {
-          width: 100%;
+          width: auto;
           aspect-ratio: 3 / 2;
           height: 100%;
         }
@@ -896,7 +902,9 @@ object {
         }
 
         .entry-content-wrap {
-          max-width: 62%;
+          // justify-content: start;
+          width: min-content;
+          flex: auto;
           .entry-summary {
             margin: 0 !important;
           }
@@ -1396,11 +1404,8 @@ article.sticky {
   margin-right: auto;
 }
 .wp-site-blocks .post-thumbnail .post-thumbnail-inner {
-  position: absolute;
-  top: 2rem;
-  bottom: 2rem;
-  left: 2rem;
-  right: 2rem;
+  height: 100%;
+  width: 100%;
 
   img {
     object-fit: cover;
@@ -1708,6 +1713,13 @@ a.post-more-link:hover {
 .entry-hero .title-align-left {
   text-align: left;
   align-items: flex-start;
+  @media screen and (max-width: 1333px) {
+    min-height: unset;
+    padding: 24px 0;
+    .kadence-breadcrumbs {
+      margin: 0;
+    }
+  }
 }
 .entry-hero .title-align-center {
   text-align: center;
