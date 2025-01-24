@@ -739,7 +739,7 @@ object {
         padding-bottom: 0;
         aspect-ratio: 3 / 2;
         margin: 32px;
-        position: relative;
+        // position: relative;
         height: auto;
         * {
           transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
@@ -756,6 +756,11 @@ object {
           &:hover {
             transform: scale(0.96);
           }
+        }
+
+        &::after {
+          content: "";
+          display: inline-block;
         }
       }
       @media screen and (max-width: 768px) {
