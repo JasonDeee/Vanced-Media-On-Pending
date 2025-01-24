@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
 ::-webkit-scrollbar {
   width: 4px;
   background-color: var(--e-global-color-primary);
@@ -353,8 +354,14 @@
   opacity: 1;
 }
 
+@media screen and (min-width: 768px) {
+  footer:is(.site-footer) {
+    margin-top: 78px;
+  }
+}
+
 @media screen and (min-width: 1200px) {
-  footer {
+  footer:is(.site-footer) {
     margin-top: 48px;
   }
   .Vx_PostHolder {

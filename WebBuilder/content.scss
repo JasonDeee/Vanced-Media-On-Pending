@@ -722,8 +722,12 @@ object {
   &.post-archive {
     column-gap: 0 !important;
     row-gap: 0 !important;
+    padding: 0 24px;
 
-    @media screen and (min-width: 1200px) {
+    // @media screen and (min-width: 576px) {
+    // }
+
+    @media screen and (min-width: 1333px) {
       min-width: 1200px;
       width: 95vw;
     }
@@ -754,15 +758,15 @@ object {
           }
         }
       }
+      @media screen and (max-width: 768px) {
+        .entry-content-wrap {
+          padding-left: 32px;
+          padding-right: 32px;
+        }
+      }
     }
 
     article:is(.entry.loop-entry:first-child) {
-      display: flex;
-      padding: 32px;
-      justify-content: space-between;
-      gap: 32px;
-      position: relative;
-
       &::after {
         position: absolute;
         background-color: var(--global-palette3);
@@ -778,22 +782,30 @@ object {
         text-align: center;
         align-content: center;
       }
+      position: relative;
 
-      a:is(.post-thumbnail) {
-        padding: 0;
-        width: calc(34.2vw - 48px);
-        height: auto;
-        aspect-ratio: 3 / 2;
-        margin: 0;
-        // height: calc((34.2vw - 48px) * 2 / 3);
+      @media screen and (min-width: 768px) {
+        display: flex;
+        padding: 32px;
+        justify-content: space-between;
+        gap: 32px;
+        a:is(.post-thumbnail) {
+          padding: 0;
+          width: calc(34.2vw - 48px);
+          height: auto;
+          aspect-ratio: 3 / 2;
+          margin: 0;
+          // height: calc((34.2vw - 48px) * 2 / 3);
 
-        .post-thumbnail-inner {
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
+          .post-thumbnail-inner {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+          }
         }
       }
+
       @media screen and (min-width: 1600px) {
         a:is(.post-thumbnail) {
           width: auto;
@@ -801,22 +813,23 @@ object {
           height: 100%;
         }
       }
-
-      .entry-content-wrap {
-        justify-content: space-between;
-        display: flex;
-        flex-direction: column;
-        margin-top: 0;
-        padding: 0;
-
-        // .entry-header {
-        //         margin: 0;
-        //       }
-        .entry-meta {
+      @media screen and (min-width: 768px) {
+        .entry-content-wrap {
+          justify-content: space-between;
+          display: flex;
+          flex-direction: column;
+          margin-top: 0;
           padding: 0;
-        }
-        .entry-summary {
-          flex: auto;
+
+          // .entry-header {
+          //         margin: 0;
+          //       }
+          .entry-meta {
+            padding: 0;
+          }
+          .entry-summary {
+            flex: auto;
+          }
         }
       }
     }
@@ -851,13 +864,32 @@ object {
 
       &:is(.entry.loop-entry:first-child) {
         grid-column: span 2;
+
+        @media screen and (max-width: 576px) {
+          grid-column: unset;
+        }
+
+        @media screen and (max-width: 768px) {
+          padding-top: 3rem;
+        }
+
+        @media screen and (min-width: 768px) {
+          //   grid-column: span 2;
+          flex-direction: column;
+          justify-content: start;
+          padding-top: calc(3rem + 32px);
+        }
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+          flex-direction: row-reverse;
+          justify-content: start;
+          display: flex;
+        }
+        @media screen and (min-width: 1024px) {
+          // grid-row: span 2;
+        }
         @media screen and (min-width: 1600px) {
           grid-row: span 2;
         }
-
-        flex-direction: column;
-        justify-content: start;
-        padding-top: calc(3rem + 32px);
 
         &::after {
           content: "Nổi bật";
@@ -869,19 +901,39 @@ object {
         }
 
         a:is(.post-thumbnail) {
-          height: auto;
-          @media screen and (max-width: 1600px) {
+          @media screen and (min-width: 768px) {
+            height: auto;
             width: 62%;
+          }
+
+          @media screen and (max-width: 1600px) and (min-width: 1024px) {
             position: absolute;
             top: calc(3rem + 32px);
             right: 32px;
+          }
+          @media screen and (min-width: 1600px) {
+            width: 100%;
           }
         }
 
         .entry-content-wrap {
           flex: auto;
 
-          @media screen and (max-width: 1600px) {
+          @media screen and (min-width: 768px) and (max-width: 768px) {
+            flex-direction: column;
+            display: flex;
+          }
+
+          @media screen and (min-width: 768px) and (max-width: 1024px) {
+            width: min-content;
+            position: relative;
+
+            .entry-footer {
+              padding: 0;
+            }
+          }
+
+          @media screen and (max-width: 1600px) and (min-width: 1024px) {
             padding-right: calc(62% + 64px);
           }
         }
@@ -890,23 +942,44 @@ object {
 
     article:is(.category-post) {
       &:is(.entry.loop-entry:first-child) {
-        grid-column: span 3;
-        flex-direction: row-reverse;
-        padding-left: calc(6rem + 32px);
+        grid-column: unset;
+        padding-left: 4rem;
+        @media screen and (max-width: 768px) and (min-width: 576px) {
+          grid-column: span 2;
+        }
+
+        @media screen and (min-width: 768px) {
+          grid-column: span 3;
+          flex-direction: row-reverse;
+          padding-left: calc(6rem + 32px);
+        }
+
+        @media screen and (max-width: 1024px) and (min-width: 768px) {
+          grid-column: span 2;
+
+          a:is(.post-thumbnail) {
+            width: 62%;
+          }
+        }
         &::after {
           content: "Mới nhất";
           left: 0;
           top: 0;
           height: 100%;
           width: 6rem;
+          @media screen and (max-width: 768px) {
+            width: 4rem;
+            font-size: 1rem;
+          }
         }
-
-        .entry-content-wrap {
-          // justify-content: start;
-          width: min-content;
-          flex: auto;
-          .entry-summary {
-            margin: 0 !important;
+        @media screen and (min-width: 768px) {
+          .entry-content-wrap {
+            // justify-content: start;
+            width: min-content;
+            flex: auto;
+            .entry-summary {
+              margin: 0 !important;
+            }
           }
         }
       }
