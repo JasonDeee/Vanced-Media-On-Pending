@@ -14,60 +14,353 @@
     }
   </style>
   <body>
-    <div id="g-sign-in-wrapper">
-      <div id="g-sign-in-button"></div>
-      <--- Nút đăng nhập
-    </div>
-    <a href="/post"></a>
-
-    <div id="message"></div>
-
-    <script>
-      function handleCredentialResponse(response) {
-        // Đảm bảo thư viện google.script.run đã sẵn sàng
-        google.script.run
-          .withSuccessHandler((message) => {
-            document.getElementById("message").innerText = message;
-
-            // Gọi hàm sao chép spreadsheet *sau khi* xác nhận google.script.run đã sẵn sàng
-            google.script.run
-              .withSuccessHandler(() => {
-                // Xử lý sau khi sao chép thành công (nếu cần)
-                document.getElementById("message").innerText =
-                  "Đã sao chép thành công";
-              })
-              .withFailureHandler((error) => {
-                // Xử lý lỗi sao chép
-                document.getElementById("message").innerText =
-                  "Lỗi sao chép: " + error;
-                console.error("Lỗi sao chép:", error);
-              })
-              .copySpreadsheetAndScripts();
-          })
-          .withFailureHandler((error) => {
-            console.error("Lỗi xác thực:", error);
-            document.getElementById("message").innerText =
-              "Lỗi xác thực: " + error;
-          })
-          .verifyCredential(response.credential);
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.2/viewer.min.css"
+      integrity="sha512-9EosEckNJFma9X2uo5ysGPhVf/dcZTuZUBVW2A9QcWBd0HAx6zs+FK+wsBGhl91uFfDI4ZY+/7MVhtYU4tXEig=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .temp {
+        width: calc((34vw - 20px) * 0.6);
+        width: 32vw;
+        height: 50vh;
+        height: calc((100vw / 16) * 9 * 0.8);
+        top: calc((64vw / 3) + 4vw);
+        top: calc(50vw - 310px);
+        top: calc(45vw / 4);
+        left: calc(19vw - 70px);
+        top: 0;
+        left: 2vw;
+        -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(16px);
+        margin-left: 32px;
+        padding-top: 20px;
+        margin-top: -2px;
+        margin-bottom: -2px;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+        -webkit-transform-origin: 0% 50%;
+        transform-origin: 0% 50%;
+        cursor: pointer;
+        -webkit-filter: drop-shadow(6px 6px 32px #00000056);
+        filter: drop-shadow(6px 6px 32px #00000056);
       }
-      window.onload = function () {
-        google.accounts.id.initialize({
-          client_id:
-            "153083226508-qmlv5ko26irv72rrshs6g2i3vnr4d1g4.apps.googleusercontent.com",
-          callback: handleCredentialResponse,
-        });
-        google.accounts.id.renderButton(
-          document.getElementById("g-sign-in-button"),
-          { theme: "outline", size: "large" } // customization attributes
-        );
-        google.accounts.id.prompt(); // also display the One Tap dialog
-      };
 
-      function displayMessage(message) {
-        document.getElementById("message").innerText = message;
-        google.script.run.copySpreadsheetAndScripts();
+      ::-webkit-scrollbar {
+        display: none;
       }
-    </script>
+
+      .ProduceColorToggler {
+        cursor: pointer;
+        -webkit-transition: all 0.33s 0s linear;
+        transition: all 0.33s 0s linear;
+        opacity: 1;
+      }
+
+      .ProduceColorToggler:hover {
+        opacity: 0.62;
+      }
+
+      .ProduceColorToggler .ladi-shape::after {
+        width: 44px;
+        height: 44px;
+        position: absolute;
+        top: -3px;
+        border-radius: 50%;
+        border: solid 1px #151515;
+        -webkit-transition: all 0.33s 0s linear;
+        transition: all 0.33s 0s linear;
+        content: "";
+        opacity: 0;
+      }
+
+      #William .ProduceColorToggler .ladi-shape::after,
+      #BroadWay .ProduceColorToggler .ladi-shape::after {
+        border: solid 1px #ffffff;
+      }
+
+      .OnActive .ladi-shape::after {
+        opacity: 1;
+      }
+
+      .StickyPos .ladi-gallery-bottom {
+        overflow: hidden;
+        cursor: -webkit-zoom-in;
+        cursor: zoom-in;
+      }
+
+      .StickyPos .ladi-gallery-bottom::after {
+        margin: auto;
+        content: "";
+        background-size: contain;
+        background-repeat: no-repeat !important;
+        -webkit-transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1);
+        transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1);
+        position: absolute;
+      }
+
+      @media screen and (min-width: 769px) {
+        body,
+        html {
+          width: 100vw !important;
+        }
+        .ladi-wraper {
+          overflow: unset !important;
+        }
+        .ladi-section {
+          overflow: hidden;
+        }
+        .StretchSection .ladi-container {
+          width: 100vw;
+        }
+        #Sec1 #HeaderVideo {
+          position: fixed !important;
+          top: 0;
+        }
+        .IgnoreLeftSection {
+          left: unset !important;
+        }
+        .HidenOverflow {
+          overflow: hidden;
+          -webkit-clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
+          clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
+        }
+        .HidenOverflow .ladi-section-background {
+          -webkit-backdrop-filter: blur(16px);
+          backdrop-filter: blur(16px);
+        }
+        .FixedElement {
+          position: fixed !important;
+        }
+        .StickyPos {
+          position: -webkit-sticky !important;
+          position: sticky !important;
+        }
+        .StickyPos .ladi-gallery-bottom::after {
+          background: #00000076;
+          background-image: url("https://w.ladicdn.com/60baf75a6d94f20020f1776e/zoomin-20230215101952-reaiv.svg");
+          background-position: center center;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          margin: auto;
+          pointer-events: none;
+          -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+          -webkit-transform-origin: center center;
+          transform-origin: center center;
+          opacity: 0;
+        }
+        .StickyPos .ladi-gallery-bottom:hover::after {
+          opacity: 1;
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+        .StickyPos .ladi-gallery-view-item {
+          -webkit-transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1) !important;
+          transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1) !important;
+          -webkit-transform-origin: center center;
+          transform-origin: center center;
+        }
+        .StickyPos .ladi-gallery-bottom:hover .selected {
+          -webkit-transform: scale(1.12);
+          transform: scale(1.12);
+        }
+        .StickyReadlySecton {
+          overflow: unset !important;
+        }
+        .StickyReadlySecton .ladi-container {
+          width: 100vw;
+          overflow: unset !important;
+        }
+        .ProduceColorToggler .ladi-shape::after {
+          left: -3px;
+        }
+      }
+
+      .LowerHoverButton .ladi-button {
+        -webkit-transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1) !important;
+        transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1) !important;
+        background-color: #ffffff !important;
+        background: #fff !important;
+      }
+
+      .LowerHoverButton .ladi-button-background {
+        background: #997222 !important;
+        -webkit-clip-path: circle(0% at top 20% right 30%);
+        clip-path: circle(0% at top 20% right 30%);
+        -webkit-transition: all 0.8s 0s cubic-bezier(0.5, 0, 1, 0.5);
+        transition: all 0.8s 0s cubic-bezier(0.5, 0, 1, 0.5);
+      }
+
+      .LowerHoverButton .ladi-headline,
+      .LowerHoverButton .ladi-shape svg {
+        -webkit-transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1);
+        transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1);
+      }
+
+      .LowerHoverButton:hover .ladi-button {
+        border-color: transparent !important;
+      }
+
+      .LowerHoverButton:hover .ladi-button-background {
+        -webkit-transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1);
+        transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1);
+        -webkit-clip-path: circle(140% at top 20% right 30%);
+        clip-path: circle(140% at top 20% right 30%);
+      }
+
+      .LowerHoverButton:hover .ladi-headline {
+        color: white !important;
+      }
+
+      .LowerHoverButton:hover .ladi-shape svg {
+        fill: #ffffff !important;
+      }
+
+      @media screen and (max-width: 768px) {
+        .ladi-wraper {
+          overflow: unset !important;
+        }
+        body .ladi-wraper {
+          max-width: 100vw;
+        }
+        .ProduceColorToggler .ladi-shape::after {
+          left: -4px;
+        }
+        .LowerHoverButton .ladi-button {
+          background: #292929;
+        }
+        .LowerHoverButton .ladi-button-background {
+          background: #997222 !important;
+        }
+        .LowerHoverButton .ladi-button-headline .ladi-headline {
+          color: white !important;
+        }
+        .LowerHoverButton .ladi-shape svg {
+          fill: #ffffff !important;
+        }
+        .StickyPos {
+          position: -webkit-sticky !important;
+          position: sticky !important;
+          top: 0px !important;
+        }
+        .StickyPos .ladi-gallery-bottom::after {
+          content: "";
+          width: 100%;
+          height: 40px;
+          bottom: 0;
+          right: 0;
+          pointer-events: none;
+          background-image: url(https://w.ladicdn.com/60baf75a6d94f20020f1776e/fullscreen-20230217023818-mw9ps.svg),
+            -webkit-gradient(linear, left top, left bottom, from(#00000000), to(#00000096));
+          background-image: url(https://w.ladicdn.com/60baf75a6d94f20020f1776e/fullscreen-20230217023818-mw9ps.svg),
+            linear-gradient(180deg, #00000000 0%, #00000096 100%);
+          background-position: right center;
+        }
+      }
+
+      @media screen and (min-width: 1024px) and (max-width: 1366px) {
+        .BelowTheWidth {
+          -webkit-transform: scale(0.82) !important;
+          transform: scale(0.82) !important;
+        }
+      }
+
+      @media screen and (min-width: 769px) and (max-width: 1023px) {
+        .BelowTheWidth {
+          -webkit-transform: scale(0.76) !important;
+          transform: scale(0.76) !important;
+        }
+      }
+
+      .BL_Origin {
+        -webkit-transform-origin: left bottom;
+        transform-origin: left bottom;
+      }
+
+      .TL_Origin {
+        -webkit-transform-origin: left top;
+        transform-origin: left top;
+      }
+
+      .CC_Origin {
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+      }
+
+      .LC_Origin {
+        -webkit-transform-origin: 0% 50%;
+        transform-origin: 0% 50%;
+      }
+
+      .TR_Origin {
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+      }
+
+      .BrandHoverBox {
+        cursor: help;
+        -webkit-transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1);
+        transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1);
+        overflow: hidden;
+      }
+
+      .BrandHoverBox * {
+        -webkit-transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1);
+        transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1);
+      }
+
+      .BrandHoverBox::after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        -webkit-transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1);
+        transition: all 1.2s 0s cubic-bezier(0.25, 0, 0, 1);
+      }
+
+      .PointerNone {
+        pointer-events: none;
+      }
+
+      #CD-Brand {
+        -webkit-transform-origin: 70% 50%;
+        transform-origin: 70% 50%;
+      }
+
+      #WS-Brand {
+        -webkit-transform-origin: 30% 50%;
+        transform-origin: 30% 50%;
+      }
+
+      #WS-Brand::after {
+        background: #1a244e;
+      }
+
+      #CD-Brand::after {
+        background: #997222;
+      }
+
+      .SectionActive .BrandHoverBox {
+        -webkit-transform: scale(0.94);
+        transform: scale(0.94);
+      }
+
+      .SectionActive .BrandHoverBox .ladi-box {
+        -webkit-transform: scale(1.04);
+        transform: scale(1.04);
+      }
+
+      .BrandHoverBox:hover::after {
+        opacity: 1;
+      }
+    </style>
   </body>
 </html>

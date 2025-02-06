@@ -334,3 +334,22 @@ $transition-long: all 1.33s cubic-bezier(0.25, 0, 0, 1);
     }
   }
 }
+
+.Vx_Hover_IMG {
+  * {
+    transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
+  }
+
+  a {
+    overflow: hidden;
+
+    &:hover {
+      transform: scale(96%);
+    }
+  }
+  img {
+    &:hover {
+      transform: scale(112%);
+    }
+  }
+}

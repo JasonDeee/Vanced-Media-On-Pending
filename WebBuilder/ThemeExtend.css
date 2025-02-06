@@ -374,4 +374,23 @@
     width: 156px;
   }
 }
+
+.Vx_Hover_IMG * {
+  -webkit-transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
+  transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
+}
+
+.Vx_Hover_IMG a {
+  overflow: hidden;
+}
+
+.Vx_Hover_IMG a:hover {
+  -webkit-transform: scale(96%);
+          transform: scale(96%);
+}
+
+.Vx_Hover_IMG img:hover {
+  -webkit-transform: scale(112%);
+          transform: scale(112%);
+}
 /*# sourceMappingURL=ThemeExtend.css.map */

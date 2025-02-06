@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: "Lexend", sans-serif;
@@ -8,31 +9,38 @@
 }
 
 .LightButtonHover .elementor-button {
+  -webkit-transition: all 0.66s cubic-bezier(0.25, 0, 0, 1);
   transition: all 0.66s cubic-bezier(0.25, 0, 0, 1);
   background-color: var(--e-global-color-accent) !important;
 }
+
 .LightButtonHover .elementor-button:hover {
-  box-shadow: 4px 4px 0px 0px #0c1136 !important;
+  -webkit-box-shadow: 4px 4px 0px 0px #0c1136 !important;
+          box-shadow: 4px 4px 0px 0px #0c1136 !important;
 }
 
 .BGHoverContainer,
 .BGHoverContainer::after,
 .BGHoverContainer::before {
+  -webkit-transition: all 1.33s cubic-bezier(0.25, 0, 0, 1);
   transition: all 1.33s cubic-bezier(0.25, 0, 0, 1);
   cursor: pointer !important;
   overflow: hidden !important;
 }
 
 .BGHoverContainer:hover {
-  transform: scale(0.96);
+  -webkit-transform: scale(0.96);
+          transform: scale(0.96);
 }
 
 .BGHoverContainer:hover::before {
-  transform: scale(1.12);
+  -webkit-transform: scale(1.12);
+          transform: scale(1.12);
 }
 
 .Vx_PostHolder {
-  box-shadow: 8px 8px 32px rgba(0, 0, 0, 0.337254902);
+  -webkit-box-shadow: 8px 8px 32px #00000056;
+          box-shadow: 8px 8px 32px #00000056;
 }
 
 html {
@@ -40,18 +48,29 @@ html {
 }
 
 body {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 2vh;
   height: 100vh;
   padding-bottom: 10vh;
 }
+
 body .lordicon {
   width: 8vw;
   height: 8vw;
 }
+
 body .Vx_Logo {
   width: 5vw;
   height: 5vw;
@@ -61,6 +80,7 @@ body .Vx_Logo {
   right: 0;
   margin: auto;
 }
+
 body h1,
 body p {
   font-size: 2rem;
@@ -86,4 +106,5 @@ body p {
     height: 15vw;
     bottom: 5vh;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+/*# sourceMappingURL=style.css.map */
