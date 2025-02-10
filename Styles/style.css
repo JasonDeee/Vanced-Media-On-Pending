@@ -96,6 +96,7 @@ body p {
   }
   body h1 {
     font-size: 1.6rem;
+    max-width: 17rem;
   }
   body .lordicon {
     width: 62vw;
