@@ -3,4 +3,7 @@
 }
 #Vx_cta_illustration * {
   transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
+}
+#Vx_cta_illustration #LightBulb_Group {
+  transition: all 0.33s cubic-bezier(0.1, 0, 0, 1);
 }/*# sourceMappingURL=style.css.map */
