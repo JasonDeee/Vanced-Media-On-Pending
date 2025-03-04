@@ -1,0 +1,47 @@
+#ajaxsearchlite1 .probox,
+div.asl_w .probox {
+  border-color: var(--global-palette5);
+}
+
+div.asl_w .probox .promagnifier .innericon svg {
+  fill: var(--global-palette5);
+  transition: all 0.6s cubic-bezier(0.25, 0, 0, 1);
+}
+div.asl_w .probox .promagnifier .innericon svg:hover {
+  fill: var(--global-palette1);
+}
+
+.SwitchColored div.asl_w .probox .promagnifier .innericon svg {
+  fill: var(--global-palette9);
+  transition: all 0.6s cubic-bezier(0.25, 0, 0, 1);
+}
+.SwitchColored div.asl_w .probox .promagnifier .innericon svg:hover {
+  fill: var(--global-palette1);
+}
+
+#Header_Search_Console div.asl_w .probox {
+  border: none;
+  background-color: var(--global-palette1);
+}
+#Header_Search_Console div.asl_w .probox .promagnifier .innericon svg {
+  fill: var(--global-palette9);
+  transition: all 0.6s cubic-bezier(0.25, 0, 0, 1);
+}
+#Header_Search_Console div.asl_w .probox .promagnifier .innericon svg:hover {
+  fill: var(--global-palette5);
+}
+#Header_Search_Console .probox .promagnifier {
+  box-shadow: none;
+  border: none;
+}
+#Header_Search_Console #ajaxsearchlite1 .probox .proinput input,
+#Header_Search_Console div.asl_w .probox .proinput input {
+  color: var(--global-palette9) !important;
+}
+#Header_Search_Console #ajaxsearchlite1 .probox .proinput input::-moz-placeholder, #Header_Search_Console div.asl_w .probox .proinput input::-moz-placeholder {
+  color: var(--global-palette9) !important;
+}
+#Header_Search_Console #ajaxsearchlite1 .probox .proinput input::placeholder,
+#Header_Search_Console div.asl_w .probox .proinput input::placeholder {
+  color: var(--global-palette9) !important;
+}/*# sourceMappingURL=searchbox.css.map */

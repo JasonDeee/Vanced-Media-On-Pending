@@ -5,22 +5,18 @@
   -webkit-transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
   transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
 }
-
 ::-webkit-scrollbar:hover {
   background-color: var(--global-palette8);
   width: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background-color: none;
   -webkit-transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
   transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
 }
-
 ::-webkit-scrollbar-track:hover {
   background-color: none;
 }
-
 ::-webkit-scrollbar-thumb {
   background: var(--e-global-color-secondary);
   border-radius: 16px;
@@ -33,13 +29,11 @@
   border: none;
   height: 100px;
 }
-
 .SwitchColored .has-logo-image {
   background-image: url("https://package.vanced.media/Assets/VancedMedia-Logo-White.svg");
   background-size: cover;
   background-repeat: no-repeat;
 }
-
 .SwitchColored .has-logo-image img {
   opacity: 0;
 }
@@ -57,14 +51,11 @@
 }
 
 .LightButtonHover .elementor-button {
-  -webkit-transition: all 0.66s cubic-bezier(0.25, 0, 0, 1);
   transition: all 0.66s cubic-bezier(0.25, 0, 0, 1);
   background-color: var(--e-global-color-accent) !important;
 }
-
 .LightButtonHover .elementor-button:hover {
-  -webkit-box-shadow: 4px 4px 0px 0px #0c1136 !important;
-          box-shadow: 4px 4px 0px 0px #0c1136 !important;
+  box-shadow: 4px 4px 0px 0px #0c1136 !important;
 }
 
 .SpringCodeCopyButton {
@@ -75,16 +66,12 @@
 .StringCodeHolder code {
   padding: 0 !important;
   background: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .StringCodeHolder pre {
   max-height: 80%;
   overflow: scroll;
 }
-
 .StringCodeHolder ::-webkit-scrollbar-thumb {
   background: var(--global-palette8);
 }
@@ -92,40 +79,23 @@
 .QR_TurnButton {
   cursor: pointer;
   padding: 0 !important;
-  -webkit-box-sizing: border-box !important;
-          box-sizing: border-box !important;
-  -webkit-transition: all 0.66s cubic-bezier(0.25, 0, 0, 1);
+  box-sizing: border-box !important;
   transition: all 0.66s cubic-bezier(0.25, 0, 0, 1);
   position: relative;
 }
-
 .QR_TurnButton .elementor-widget-html .elementor-widget-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
 .QR_TurnButton .elementor-widget-html .elementor-widget-container path {
-  -webkit-transition: all 0.66s cubic-bezier(0.25, 0, 0, 1);
   transition: all 0.66s cubic-bezier(0.25, 0, 0, 1);
 }
-
 .QR_TurnButton::before {
-  -webkit-transition: all 0.66s cubic-bezier(0.25, 0, 0, 1);
   transition: all 0.66s cubic-bezier(0.25, 0, 0, 1);
   content: "";
-  -webkit-box-sizing: border-box !important;
-          box-sizing: border-box !important;
+  box-sizing: border-box !important;
   background: var(--e-global-color-secondary);
   width: 0;
   height: 0;
@@ -138,16 +108,12 @@
   margin: 0;
   border: none !important;
 }
-
 .QR_TurnButton:hover {
-  -webkit-transform: scale(1.23);
-          transform: scale(1.23);
+  transform: scale(1.23);
 }
-
 .QR_TurnButton:hover path {
   stroke: var(--e-global-color-primary);
 }
-
 .QR_TurnButton:hover::before {
   width: 100%;
   height: 100%;
@@ -158,21 +124,23 @@
 .Vx_Donate_Section h1 {
   margin-top: 0 !important;
 }
-
 .Vx_Donate_Section .Donater_Name input,
 .Vx_Donate_Section .Donater_Name textarea,
 .Vx_Donate_Section .Donater_Messages input,
 .Vx_Donate_Section .Donater_Messages textarea {
   outline: none;
   border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   font-size: 1rem;
   color: var(--global-palette2);
-  -webkit-transition: all 0.88s cubic-bezier(0.25, 0, 0, 1), height 0s linear, width 0s linear;
   transition: all 0.88s cubic-bezier(0.25, 0, 0, 1), height 0s linear, width 0s linear;
 }
-
+.Vx_Donate_Section .Donater_Name input:-moz-placeholder-shown, .Vx_Donate_Section .Donater_Name textarea:-moz-placeholder-shown, .Vx_Donate_Section .Donater_Messages input:-moz-placeholder-shown, .Vx_Donate_Section .Donater_Messages textarea:-moz-placeholder-shown {
+  color: var(--global-palette2) !important;
+  opacity: 0.89;
+  font-size: 0.86rem;
+  font-weight: 400;
+}
 .Vx_Donate_Section .Donater_Name input:placeholder-shown,
 .Vx_Donate_Section .Donater_Name textarea:placeholder-shown,
 .Vx_Donate_Section .Donater_Messages input:placeholder-shown,
@@ -182,7 +150,6 @@
   font-size: 0.86rem;
   font-weight: 400;
 }
-
 .Vx_Donate_Section .Donater_Name input:focus, .Vx_Donate_Section .Donater_Name input:valid,
 .Vx_Donate_Section .Donater_Name textarea:focus,
 .Vx_Donate_Section .Donater_Name textarea:valid,
@@ -192,165 +159,115 @@
 .Vx_Donate_Section .Donater_Messages textarea:valid {
   color: var(--e-global-color-secondary);
 }
-
 .Vx_Donate_Section .Donater_Name input:hover,
 .Vx_Donate_Section .Donater_Name textarea:hover,
 .Vx_Donate_Section .Donater_Messages input:hover,
 .Vx_Donate_Section .Donater_Messages textarea:hover {
   color: var(--e-global-color-accent);
 }
-
 .Vx_Donate_Section .Donater_Name textarea::-webkit-resizer,
 .Vx_Donate_Section .Donater_Messages textarea::-webkit-resizer {
   display: block;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: 4px;
   height: 4px;
   border: solid;
   border-width: 0px 2px 2px 0;
   color: var(--e-global-color-secondary);
 }
-
 .Vx_Donate_Section .Donater_Name textarea::-webkit-scrollbar,
 .Vx_Donate_Section .Donater_Messages textarea::-webkit-scrollbar {
   width: 8px;
 }
-
 .Vx_Donate_Section .Donater_Name textarea::-webkit-scrollbar-thumb,
 .Vx_Donate_Section .Donater_Messages textarea::-webkit-scrollbar-thumb {
   background: var(--global-palette8);
 }
-
 .Vx_Donate_Section .Donate_CreateQR {
   cursor: pointer;
 }
 
 #QR_ClientForm {
-  -webkit-transition: all 1.33s cubic-bezier(0.25, 0, 0, 1);
   transition: all 1.33s cubic-bezier(0.25, 0, 0, 1);
-  -webkit-transform: translateX(-100vw);
-          transform: translateX(-100vw);
+  transform: translateX(-100vw);
 }
-
 #QR_ClientForm.qrActive {
-  -webkit-transform: none;
-          transform: none;
+  transform: none;
 }
 
 #QR_Generated_Section * {
-  -webkit-transition: all 1.33s cubic-bezier(0.25, 0, 0, 1);
   transition: all 1.33s cubic-bezier(0.25, 0, 0, 1);
 }
-
 #QR_Generated_Section .elementor-divider span {
   width: 0;
 }
-
 #QR_Generated_Section #QR_TurnBack {
-  -webkit-transform: translateY(-130%);
-          transform: translateY(-130%);
+  transform: translateY(-130%);
 }
-
 #QR_Generated_Section .QR_TurnBackText {
-  -webkit-transform: translateY(-64px);
-          transform: translateY(-64px);
+  transform: translateY(-64px);
 }
-
 #QR_Generated_Section .QR_GeneratedHolder {
-  -webkit-transform: translateX(100vw);
-          transform: translateX(100vw);
+  transform: translateX(100vw);
 }
-
 #QR_Generated_Section .QR_GeneratedHolder #QRImage {
-  -webkit-transform: scale(0.78);
-          transform: scale(0.78);
+  transform: scale(0.78);
 }
-
 #QR_Generated_Section #QR_Generated_Heading,
 #QR_Generated_Section #QR_Generated_Description,
 #QR_Generated_Section #QR_TurnBack_Box {
-  -webkit-transform: translateY(50vh);
-          transform: translateY(50vh);
+  transform: translateY(50vh);
 }
-
 #QR_Generated_Section.qrActive * {
-  -webkit-transition-delay: 422ms;
-          transition-delay: 422ms;
+  transition-delay: 422ms;
 }
-
 #QR_Generated_Section.qrActive .elementor-divider span {
   width: 100% !important;
 }
-
 #QR_Generated_Section.qrActive #QR_TurnBack {
-  -webkit-transition-delay: 1666ms;
-          transition-delay: 1666ms;
-  -webkit-transform: none;
-          transform: none;
+  transition-delay: 1666ms;
+  transform: none;
 }
-
 #QR_Generated_Section.qrActive .QR_TurnBackText {
-  -webkit-transition-delay: 2222ms;
-          transition-delay: 2222ms;
-  -webkit-transform: none;
-          transform: none;
+  transition-delay: 2222ms;
+  transform: none;
 }
-
 #QR_Generated_Section.qrActive .QR_GeneratedHolder {
-  -webkit-transform: none;
-          transform: none;
+  transform: none;
 }
-
 #QR_Generated_Section.qrActive .QR_GeneratedHolder #QRImage {
-  -webkit-transition-delay: 2222ms;
-          transition-delay: 2222ms;
-  -webkit-transform: none;
-          transform: none;
+  transition-delay: 2222ms;
+  transform: none;
   mix-blend-mode: multiply;
 }
-
 #QR_Generated_Section.qrActive #QRUpdateButton {
   cursor: pointer !important;
-  -webkit-transition: all 1.33s cubic-bezier(0.25, 0, 0, 1) !important;
   transition: all 1.33s cubic-bezier(0.25, 0, 0, 1) !important;
 }
-
 #QR_Generated_Section.qrActive #QR_Generated_Heading,
 #QR_Generated_Section.qrActive #QR_Generated_Description,
 #QR_Generated_Section.qrActive #QR_TurnBack_Box {
-  -webkit-transform: none;
-          transform: none;
+  transform: none;
 }
-
 #QR_Generated_Section.qrActive #QR_Generated_Heading {
-  -webkit-transition-delay: 1622ms;
-          transition-delay: 1622ms;
+  transition-delay: 1622ms;
 }
-
 #QR_Generated_Section.qrActive #QR_Generated_Description {
-  -webkit-transition-delay: 2022ms;
-          transition-delay: 2022ms;
+  transition-delay: 2022ms;
 }
-
 #QR_Generated_Section.qrActive #QR_TurnBack_Box {
-  -webkit-transition-delay: 2422ms;
-          transition-delay: 2422ms;
+  transition-delay: 2422ms;
 }
 
 #QR_Normal_Pending_Icon {
-  -webkit-transition: all 1.33s cubic-bezier(0.25, 0, 0, 1);
   transition: all 1.33s cubic-bezier(0.25, 0, 0, 1);
   gap: -16px;
-  -webkit-transform: scale(0.32);
-          transform: scale(0.32);
+  transform: scale(0.32);
   opacity: 0;
 }
-
 #QR_Normal_Pending_Icon.qrActive {
   gap: 0;
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
   opacity: 1;
 }
 
@@ -359,7 +276,6 @@
     margin-top: 78px;
   }
 }
-
 @media screen and (min-width: 1200px) {
   footer:is(.site-footer) {
     margin-top: 48px;
@@ -374,23 +290,15 @@
     width: 156px;
   }
 }
-
 .Vx_Hover_IMG * {
-  -webkit-transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
   transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
 }
-
 .Vx_Hover_IMG a {
   overflow: hidden;
 }
-
 .Vx_Hover_IMG a:hover {
-  -webkit-transform: scale(96%);
-          transform: scale(96%);
+  transform: scale(96%);
 }
-
 .Vx_Hover_IMG img:hover {
-  -webkit-transform: scale(112%);
-          transform: scale(112%);
-}
-/*# sourceMappingURL=ThemeExtend.css.map */
+  transform: scale(112%);
+}/*# sourceMappingURL=ThemeExtend.css.map */
