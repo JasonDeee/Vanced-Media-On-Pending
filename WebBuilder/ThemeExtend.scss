@@ -353,3 +353,8 @@ $transition-long: all 1.33s cubic-bezier(0.25, 0, 0, 1);
     }
   }
 }
+.woocommerce-shop {
+  #primary {
+    padding: 32px 5vw !important;
+  }
+}

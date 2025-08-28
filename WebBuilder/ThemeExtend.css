@@ -393,4 +393,8 @@
   -webkit-transform: scale(112%);
           transform: scale(112%);
 }
+
+.woocommerce-shop #primary {
+  padding: 32px 5vw !important;
+}
 /*# sourceMappingURL=ThemeExtend.css.map */
