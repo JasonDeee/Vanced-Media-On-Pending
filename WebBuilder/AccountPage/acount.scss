@@ -1,0 +1,31 @@
+.entry-hero {
+  .entry-hero-container-inner {
+    background: var(--global-palette3) !important;
+  }
+
+  .entry-header {
+    padding-bottom: 64px !important;
+    h1 {
+      color: var(--global-palette9) !important;
+    }
+  }
+}
+.is-large .wc-block-checkout__sidebar.is-sticky {
+  top: 64px !important;
+}
+.Vx_Woo_CheckOut {
+  margin: 0 !important;
+  .Vx_Woo_CheckOut_AddressBar {
+    .wc-block-components-address-form__address_1,
+    .wc-block-components-address-form__city {
+      display: none;
+    }
+  }
+}
+#primary {
+  margin-top: -64px !important;
+  .entry-content-wrap {
+    border: 2px solid var(--global-palette3) !important;
+    box-shadow: 4px 4px 0 var(--global-palette3) !important;
+  }
+}
