@@ -12,18 +12,13 @@
   top: 64px !important;
 }
 
-.Vx_Woo_CheckOut {
-  margin: 0 !important;
-}
-.Vx_Woo_CheckOut .Vx_Woo_CheckOut_AddressBar .wc-block-components-address-form__address_1,
-.Vx_Woo_CheckOut .Vx_Woo_CheckOut_AddressBar .wc-block-components-address-form__city {
-  display: none;
-}
-
 #primary {
   margin-top: -64px !important;
 }
 #primary .entry-content-wrap {
   border: 2px solid var(--global-palette3) !important;
   box-shadow: 4px 4px 0 var(--global-palette3) !important;
-}/*# sourceMappingURL=checkout.css.map */
+}
+#primary .wp-block-woocommerce-cart {
+  margin: 0 !important;
+}/*# sourceMappingURL=Cart.css.map */

@@ -1,14 +1,9 @@
 #Vx_cta_illustration {
   overflow: visible;
 }
-
 #Vx_cta_illustration * {
-  -webkit-transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
   transition: all 0.88s cubic-bezier(0.25, 0, 0, 1);
 }
-
 #Vx_cta_illustration #LightBulb_Group {
-  -webkit-transition: all 0.33s cubic-bezier(0.1, 0, 0, 1);
   transition: all 0.33s cubic-bezier(0.1, 0, 0, 1);
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
