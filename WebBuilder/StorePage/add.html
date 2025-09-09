@@ -1,0 +1,253 @@
+<style>
+  #main ul.products * {
+    -webkit-transition: all 0.6s cubic-bezier(0.25, 0, 0, 1);
+    transition: all 0.6s cubic-bezier(0.25, 0, 0, 1);
+  }
+
+  #main ul.products .product-excerpt {
+    display: block;
+  }
+
+  #main ul.products .product-action-wrap {
+    left: unset;
+    bottom: unset;
+    margin-bottom: 8px;
+    -webkit-box-flex: 1;
+    -ms-flex: auto;
+    flex: auto;
+    overflow: visible;
+    position: relative;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: end;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+  }
+
+  #main ul.products .product-action-wrap .add_to_cart_button {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    min-width: 64px;
+    max-width: 64px;
+    height: 64px;
+    border-radius: 512px;
+    padding: 8px 16px;
+    overflow: hidden;
+    background-color: var(--global-palette1);
+    border: 1px solid var(--global-palette3);
+    -webkit-box-shadow: 0px 0px 0 0 var(--global-palette3);
+    box-shadow: 0px 0px 0 0 var(--global-palette3);
+    color: transparent;
+    white-space: nowrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    letter-spacing: -8px;
+  }
+
+  #main ul.products .product-action-wrap .add_to_cart_button span {
+    display: none;
+  }
+
+  #main ul.products .product-action-wrap .add_to_cart_button::after {
+    content: "";
+    background-image: url("https://beta.vanced.media/wp-content/uploads/2025/09/Add_Icon.svg");
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 64px;
+    height: 100%;
+    border-radius: 512px;
+  }
+
+  #main ul.products .product-action-wrap .add_to_cart_button:hover {
+    padding-right: 64px;
+    -webkit-box-shadow: 4px 4px 0 0 var(--global-palette3);
+    box-shadow: 4px 4px 0 0 var(--global-palette3);
+    -webkit-transform: translate(-4px, -4px);
+    transform: translate(-4px, -4px);
+    color: var(--global-palette9);
+    letter-spacing: 0;
+    max-width: 256px;
+  }
+
+  #main ul.products.products-grid-view {
+    gap: 0;
+    -webkit-column-gap: 0;
+    column-gap: 0;
+    row-gap: 0;
+  }
+
+  #main ul.products.products-grid-view .product {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 32px;
+    gap: 32px;
+  }
+
+  #main ul.products.products-grid-view li.product:nth-child(1) {
+    grid-column: span 3;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+  }
+
+  #main
+    ul.products.products-grid-view
+    li.product:nth-child(1)
+    .woocommerce-loop-image-link {
+    width: 62%;
+  }
+
+  #main
+    ul.products.products-grid-view
+    li.product:nth-child(1)
+    .product-details {
+    width: 38%;
+  }
+
+  #main
+    ul.products.products-grid-view
+    li.product:nth-child(1)
+    .product-details
+    .product-action-wrap {
+    -webkit-box-pack: start !important;
+    -ms-flex-pack: start !important;
+    justify-content: start !important;
+    margin-bottom: 32px !important;
+    margin-left: -4px !important;
+  }
+
+  #main
+    ul.products.products-grid-view
+    li.product:nth-child(1)
+    .product-details
+    .product-action-wrap
+    .add_to_cart_button {
+    max-width: unset !important;
+    letter-spacing: 0 !important;
+    color: var(--global-palette9) !important;
+    padding-right: 64px !important;
+  }
+
+  #main ul.products.products-grid-view .woocommerce-loop-image-link {
+    border: 2px solid var(--global-palette3);
+    overflow: hidden;
+  }
+
+  #main ul.products.products-grid-view .woocommerce-loop-image-link:hover {
+    -webkit-transform: scale(0.96);
+    transform: scale(0.96);
+  }
+
+  #main ul.products.products-grid-view .woocommerce-loop-image-link:hover img {
+    -webkit-transform: scale(1.12);
+    transform: scale(1.12);
+  }
+
+  #main ul.products.products-grid-view .product-details {
+    border-radius: 0;
+    -webkit-transform: none !important;
+    transform: none !important;
+    -webkit-box-flex: 1;
+    -ms-flex: auto;
+    flex: auto;
+    margin: 0;
+    padding: 0;
+    padding-top: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    position: relative;
+  }
+
+  #main
+    ul.products.products-grid-view
+    .product-details
+    .woocommerce-loop-product__title {
+    font-size: 1.42rem;
+    font-weight: 700;
+  }
+
+  #main ul.products.products-grid-view .product-details .price {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: start;
+    gap: 16px;
+    margin: 0;
+    -webkit-box-ordinal-group: 101;
+    -ms-flex-order: 100;
+    order: 100;
+  }
+
+  #main
+    ul.products.products-grid-view
+    .product-details
+    .price
+    .woocommerce-Price-amount {
+    font-size: 0.9rem;
+    line-height: 0.4rem;
+  }
+
+  #main ul.products.products-grid-view .product-details .price::after {
+    content: "";
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1px;
+    background-color: var(--global-palette3);
+    -webkit-box-flex: 1;
+    -ms-flex: auto;
+    flex: auto;
+  }
+  /*# sourceMappingURL=style.css.map */
+</style>

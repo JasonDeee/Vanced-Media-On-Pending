@@ -1,0 +1,3 @@
+products content-wrap product-archive grid-cols grid-ss-col-2 grid-sm-col-3 grid-lg-col-4 woo-archive-action-visible woo-archive-btn-text woo-archive-loop woo-archive-image-hover-none products-grid-view
+
+products content-wrap product-archive grid-cols grid-ss-col-2 grid-sm-col-3 grid-lg-col-4 woo-archive-action-visible woo-archive-btn-text woo-archive-loop woo-archive-image-hover-none products-list-view
